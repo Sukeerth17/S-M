@@ -114,7 +114,7 @@ function initializeApp() {
         AppData.users.push({
             id: 1,
             username: 'demo_user',
-            email: 'demo@shopvista.com',
+            email: 'demo@EcoFinds.com',
             password: 'demo123',
             fullName: 'Demo User',
             createdAt: new Date(),
@@ -597,7 +597,7 @@ function formatPrice(price) {
 }
 
 // Global API for other pages
-window.ShopVistaAPI = {
+window.EcoFindsAPI = {
     // Data access
     getCurrentUser: () => AppData.currentUser,
     getProducts: () => AppData.products,
@@ -630,6 +630,6 @@ window.ShopVistaAPI = {
 };
 
 // Legacy support for existing code
-window.appFunctions = window.ShopVistaAPI;
+window.appFunctions = window.EcoFindsAPI;
 
-console.log('ShopVista JavaScript loaded successfully');
+console.log('EcoFinds JavaScript loaded successfully');

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart - ShopVista</title>
+    <title>Shopping Cart - EcoFinds</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -592,7 +592,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="../index.html"><h2><i class="fas fa-store"></i> ShopVista</h2></a>
+                <a href="../index.html"><h2><i class="fas fa-store"></i> EcoFinds</h2></a>
             </div>
             
             <div class="nav-menu">
@@ -853,7 +853,7 @@
                 cartItems.splice(itemIndex, 1);
                 updateCartDisplay();
                 updateCartCount();
-                showNotification(${itemName} removed from cart, 'info');
+                showNotification(`${itemName} removed from cart`, 'info');
             }
         }
 
@@ -880,7 +880,7 @@
                     showNotification('Free shipping applied!', 'success');
                 } else {
                     const discount = discountCodes[code];
-                    showNotification(${(discount * 100)}% discount applied!, 'success');
+                    showNotification(`${(discount * 100)}% discount applied!`, 'success');
                 }
                 discountInput.value = '';
                 // In a real app, you'd update the pricing here
@@ -905,7 +905,7 @@
         function showNotification(message, type = 'info') {
             // Create notification element
             const notification = document.createElement('div');
-            notification.className = message-box ${type} show;
+            notification.className = `message-box ${type} show`;
             notification.textContent = message;
             
             // Add to page

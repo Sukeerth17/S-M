@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sell Your Product - ShopVista</title>
+    <title>Sell Your Product - EcoFinds</title>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -13,7 +13,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="../index.html"><h2><i class="fas fa-store"></i> ShopVista</h2></a>
+                <a href="../index.html"><h2><i class="fas fa-store"></i> EcoFinds</h2></a>
             </div>
             
            <div class="nav-menu">
@@ -83,7 +83,7 @@
     <section class="page-header">
         <div class="container">
             <h1>Sell Your Product</h1>
-            <p>List your items and reach thousands of buyers. Turn your unused goods into cash!</p>
+            <p>List your items and reach thousands of buyers. Sell your used goods and foster a culture of sustainability and responsible consumption!</p>
         </div>
     </section>
 
@@ -276,7 +276,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3><i class="fas fa-store"></i> ShopVista</h3>
+                    <h3><i class="fas fa-store"></i> EcoFinds</h3>
                     <p>Your trusted online marketplace for quality products</p>
                 </div>
                 <div class="footer-section">
@@ -308,7 +308,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 ShopVista. All rights reserved.</p>
+                <p>&copy; 2025 EcoFinds. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -357,7 +357,7 @@
                 // Simulate product creation
                 setTimeout(() => {
                     // Add to products if API is available
-                    if (window.ShopVistaAPI) {
+                    if (window.EcoFindsAPI) {
                         const newProduct = {
                             id: Date.now(),
                             title: productData.title,
@@ -368,13 +368,13 @@
                             brand: productData.brand,
                             location: productData.location,
                             tags: productData.tags ? productData.tags.split(',').map(t => t.trim()) : [],
-                            seller: window.ShopVistaAPI.getCurrentUser()?.username || 'demo_user',
+                            seller: window.EcoFindsAPI.getCurrentUser()?.username || 'demo_user',
                             createdAt: new Date(),
                             image: "placeholder"
                         };
 
                         // Add to products array
-                        const products = window.ShopVistaAPI.getProducts();
+                        const products = window.EcoFindsAPI.getProducts();
                         products.push(newProduct);
                     }
 
@@ -384,8 +384,8 @@
                     successMessage.style.display = 'block';
                     successMessage.scrollIntoView({ behavior: 'smooth' });
                     
-                    if (window.ShopVistaAPI) {
-                        window.ShopVistaAPI.showNotification('Product listed successfully!', 'success');
+                    if (window.EcoFindsAPI) {
+                        window.EcoFindsAPI.showNotification('Product listed successfully!', 'success');
                     }
                     
                     // Reset form after success
@@ -724,7 +724,7 @@
         }
 
         .price-input::before {
-            content: ';
+            content: '';
             position: absolute;
             left: 1rem;
             top: 50%;
