@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ShopVista</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html"><h2><i class="fas fa-store"></i> ShopVista</h2></a>
+            </div>
+            
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="shop.html" class="nav-link">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-icons">
+                    <a href="cart.html" class="nav-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <div class="user-menu">
+                        <button class="user-btn" id="userMenuBtn">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="login.html">Login</a>
+                            <a href="signup.html">Sign Up</a>
+                            <div class="user-logged-in" style="display: none;">
+                                <a href="profile.html">Profile</a>
+                                <a href="my-listings.html">My Listings</a>
+                                <a href="previous-purchases.html">My Purchases</a>
+                                <a href="#" id="logoutBtn">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>Welcome Back</h1>
+                    <p>Sign in to your account</p>
+                </div>
+
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="password" name="password" class="form-control" required>
+                            <button type="button" class="password-toggle" id="passwordToggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary auth-submit" id="loginBtn">
+                        <span>Sign In</span>
+                        <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+                    </button>
+
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+
+                    <div class="auth-alternatives">
+                        <button type="button" class="btn btn-outline social-btn">
+                            <i class="fab fa-google"></i>
+                            Continue with Google
+                        </button>
+                        <button type="button" class="btn btn-outline social-btn">
+                            <i class="fab fa-facebook"></i>
+                            Continue with Facebook
+                        </button>
+                    </div>
+
+                    <div class="auth-footer">
+                        <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="auth-side">
+                <div class="auth-side-content">
+                    <h2>Join Our Community</h2>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Buy and sell with confidence</li>
+                        <li><i class="fas fa-check"></i> Secure payment processing</li>
+                        <li><i class="fas fa-check"></i> 24/7 customer support</li>
+                        <li><i class="fas fa-check"></i> Wide variety of products</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-store"></i> ShopVista</h3>
+                    <p>Your trusted online marketplace for quality products</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ShopVista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if already logged in
+            if (window.appFunctions.currentUser()) {
+                window.location.href = '../index.html';
+                return;
+            }
+
+            setupLoginForm();
+            setupPasswordToggle();
+        });
+
+        function setupLoginForm() {
+            const loginForm = document.getElementById('loginForm');
+            const loginBtn = document.getElementById('loginBtn');
+
+            loginForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(loginForm);
+                const email = formData.get('email');
+                const password = formData.get('password');
+
+                // Clear previous errors
+                clearFormErrors();
+
+                // Validate form
+                if (!validateLoginForm(email, password)) {
+                    return;
+                }
+
+                // Show loading state
+                setLoadingState(loginBtn, true);
+
+                // Simulate API call delay
+                setTimeout(() => {
+                    const result = window.appFunctions.login(email, password);
+                    
+                    setLoadingState(loginBtn, false);
+
+                    if (result.success) {
+                        window.appFunctions.showNotification(result.message, 'success');
+                        
+                        // Redirect to intended page or home
+                        const redirectUrl = new URLSearchParams(window.location.search).get('redirect') || '../index.html';
+                        setTimeout(() => {
+                            window.location.href = redirectUrl;
+                        }, 1000);
+                    } else {
+                        window.appFunctions.showNotification(result.message, 'error');
+                        
+                        // Show error on form
+                        if (result.message.includes('email')) {
+                            showFieldError('email', result.message);
+                        } else if (result.message.includes('password')) {
+                            showFieldError('password', result.message);
+                        } else {
+                            showFieldError('password', result.message);
+                        }
+                    }
+                }, 1000);
+            });
+
+            // Demo user info
+            const demoBtn = document.createElement('button');
+            demoBtn.type = 'button';
+            demoBtn.className = 'btn btn-secondary';
+            demoBtn.innerHTML = '<i class="fas fa-user"></i> Try Demo Account';
+            demoBtn.style.marginTop = '1rem';
+            
+            demoBtn.addEventListener('click', function() {
+                document.getElementById('email').value = 'demo@shopvista.com';
+                document.getElementById('password').value = 'demo123';
+                
+                // Create demo user if it doesn't exist
+                const users = window.appFunctions.getStoredData('users') || [];
+                if (!users.find(u => u.email === 'demo@shopvista.com')) {
+                    window.appFunctions.register({
+                        username: 'demo_user',
+                        email: 'demo@shopvista.com',
+                        password: 'demo123',
+                        fullName: 'Demo User'
+                    });
+                }
+            });
+            
+            loginForm.appendChild(demoBtn);
+        }
+
+        function setupPasswordToggle() {
+            const passwordToggle = document.getElementById('passwordToggle');
+            const passwordInput = document.getElementById('password');
+
+            passwordToggle.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                const icon = passwordToggle.querySelector('i');
+                icon.className = type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
+            });
+        }
+
+        function validateLoginForm(email, password) {
+            let isValid = true;
+
+            // Email validation
+            if (!email) {
+                showFieldError('email', 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showFieldError('email', 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Password validation
+            if (!password) {
+                showFieldError('password', 'Password is required');
+                isValid = false;
+            } else if (password.length < 6) {
+                showFieldError('password', 'Password must be at least 6 characters');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showFieldError(fieldName, message) {
+            const field = document.getElementById(fieldName);
+            const errorElement = document.getElementById(fieldName + 'Error');
+            
+            field.classList.add('error');
+            errorElement.textContent = message;
+        }
+
+        function clearFormErrors() {
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(element => {
+                element.textContent = '';
+            });
+
+            const errorFields = document.querySelectorAll('.form-control.error');
+            errorFields.forEach(field => {
+                field.classList.remove('error');
+            });
+        }
+
+        function setLoadingState(button, isLoading) {
+            const span = button.querySelector('span');
+            const spinner = button.querySelector('.fa-spinner');
+            
+            if (isLoading) {
+                span.style.display = 'none';
+                spinner.style.display = 'inline-block';
+                button.disabled = true;
+            } else {
+                span.style.display = 'inline-block';
+                spinner.style.display = 'none';
+                button.disabled = false;
+            }
+        }
+    </script>
+
+    <style>
+        .auth-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem 1rem;
+            margin-top: 80px;
+        }
+
+        .auth-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .auth-card {
+            padding: 3rem;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-header h1 {
+            color: #1e293b;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-header p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .auth-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .password-input {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #64748b;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: #6366f1;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
+        .forgot-password {
+            color: #6366f1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: #5855eb;
+        }
+
+        .auth-submit {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            padding: 0.875rem;
+        }
+
+        .auth-divider {
+            text-align: center;
+            position: relative;
+            margin: 1.5rem 0;
+            color: #64748b;
+        }
+
+        .auth-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        .auth-divider span {
+            background: white;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .auth-alternatives {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+        }
+
+        .auth-footer {
+            text-align: center;
+            color: #64748b;
+        }
+
+        .auth-footer a {
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .auth-footer a:hover {
+            color: #5855eb;
+        }
+
+        .auth-side {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-side-content h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #6366f1;
+        }
+
+        .auth-side-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .auth-side-content li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .auth-side-content li i {
+            color: #10b981;
+            width: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .auth-page {
+                margin-top: 80px;
+                padding: 1rem;
+            }
+
+            .auth-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .auth-side {
+                order: -1;
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .auth-card {
+                padding: 2rem;
+            }
+
+            .auth-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .auth-side-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .form-options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</body>
+</html>

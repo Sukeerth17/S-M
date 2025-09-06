@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up - EcoFinds</title>
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Tailwind CSS CDN for quick styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /*
+         * File: login-signup.html (Internal Stylesheet)
+         * Description: Comprehensive stylesheet for the user authentication page of EcoFinds.
+         * This includes base styles, form animations, and a responsive design.
+         *
+         * TABLE OF CONTENTS:
+         * 1.0 Global Variables & Base Styles
+         * 2.0 Page Layout & Card Container
+         * 3.0 Form & Element Styles
+         * 4.0 Message Box & Notifications
+         * 5.0 Keyframe Animations
+         * 6.0 Responsive Design (Media Queries)
+         */
+
+        /* =========================================================================
+           1.0 Global Variables & Base Styles
+           ========================================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #5855eb;
+            --secondary-color: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --bg-light: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-medium: 0 10px 25px rgba(0,0,0,0.15);
+            --font-family: 'Inter', sans-serif;
+            --error-color: #ef4444;
+            --success-color: #22c55e;
+            --info-color: #3b82f6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            background: var(--secondary-color);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden; /* Prevents horizontal scroll on animations */
+        }
+
+        /* =========================================================================
+           2.0 Page Layout & Card Container
+           ========================================================================= */
+
+        .login-signup-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, #eef2ff 0%, #c4b5fd 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .circle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: moveCircle 20s infinite ease-in-out;
+            will-change: transform, opacity;
+        }
+
+        .circle-1 { width: 150px; height: 150px; top: 10%; left: 5%; animation-delay: 0s; }
+        .circle-2 { width: 200px; height: 200px; bottom: 20%; right: 10%; animation-delay: 2s; }
+        .circle-3 { width: 100px; height: 100px; top: 30%; right: 15%; animation-delay: 4s; }
+        .circle-4 { width: 180px; height: 180px; bottom: 5%; left: 25%; animation-delay: 6s; }
+        .circle-5 { width: 220px; height: 220px; top: 40%; left: 40%; animation-delay: 8s; }
+
+        .card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 420px;
+            height: 650px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: slideInUp 0.8s cubic-bezier(0.2, 0.8, 0.4, 1.2) forwards;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        .card-container.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .login-card, .signup-card {
+            background-color: var(--bg-light);
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow-medium);
+            padding: 2.5rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.4, 1.2);
+        }
+
+        .signup-card {
+            transform: rotateY(180deg);
+        }
+
+        /* =========================================================================
+           3.0 Form & Element Styles
+           ========================================================================= */
+
+        .form-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-header .icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .form-header .icon:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .form-header p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1.25rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            color: var(--text-primary);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: #94a3b8;
+        }
+
+        .form-group .password-container {
+            position: relative;
+        }
+
+        .form-group .password-container .form-control {
+            padding-right: 3rem;
+        }
+
+        .form-group .password-container .toggle-password {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .form-group .password-container .toggle-password:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .link:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .divider {
+            text-align: center;
+            position: relative;
+            margin: 1.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .social-login-container {
+            width: 100%;
+        }
+
+        .social-login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: white;
+            color: var(--text-secondary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-login-btn:hover {
+            background: #eef2ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .social-login-btn i {
+            margin-right: 0.75rem;
+        }
+
+        /* =========================================================================
+           4.0 Message Box & Notifications
+           ========================================================================= */
+        .message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 1rem 2rem;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .message-box.show {
+            opacity: 1;
+        }
+
+        .message-box.error { background-color: var(--error-color); }
+        .message-box.success { background-color: var(--success-color); }
+        .message-box.info { background-color: var(--info-color); }
+
+        /* =========================================================================
+           5.0 Keyframe Animations
+           ========================================================================= */
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes moveCircle {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 0.2;
+            }
+            25% {
+                transform: translateY(-20px) scale(1.1) rotate(45deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(0) scale(1.2) rotate(90deg);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translateY(20px) scale(1.1) rotate(135deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(0) scale(1) rotate(180deg);
+                opacity: 0.2;
+            }
+        }
+
+        /* =========================================================================
+           6.0 Responsive Design (Media Queries)
+           ========================================================================= */
+
+        @media (max-width: 640px) {
+            .login-signup-page {
+                padding: 1rem;
+            }
+            .card-container {
+                max-width: 100%;
+                height: auto;
+                min-height: 550px;
+            }
+            .login-card, .signup-card {
+                padding: 1.5rem;
+            }
+            .form-header h2 {
+                font-size: 1.75rem;
+            }
+            .form-header .icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body class="login-signup-page">
+    <div class="background-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+        <div class="circle circle-4"></div>
+        <div class="circle circle-5"></div>
+    </div>
+    
+    <div class="card-container" id="cardContainer">
+        <!-- Login Card -->
+        <div class="login-card">
+            <div class="form-header">
+                <div class="icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h2>Login to EcoFinds</h2>
+                <p>Welcome back! Please enter your details.</p>
+            </div>
+            <form id="loginForm" class="w-full">
+                <div class="form-group">
+                    <label for="loginEmail" class="block text-sm font-semibold mb-1 text-gray-700">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="you@example.com" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" class="block text-sm font-semibold mb-1 text-gray-700">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+                        <span class="toggle-password" id="toggleLoginPassword">
+                            <i class="fas fa-eye-slash"></i>
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+                <div class="text-center mt-4 text-sm">
+                    Don't have an account? <span class="link" id="showSignup">Sign Up</span>
+                </div>
+            </form>
+        </div>
+
+        <!-- Sign Up Card -->
+        <div class="signup-card">
+            <div class="form-header">
+                <div class="icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h2>Create Your Account</h2>
+                <p>Join our community to start buying and selling.</p>
+            </div>
+            <form id="signupForm" class="w-full">
+                <div class="form-group">
+                    <label for="signupEmail" class="block text-sm font-semibold mb-1 text-gray-700">Email Address</label>
+                    <input type="email" id="signupEmail" class="form-control" placeholder="you@example.com" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="signupUsername" class="block text-sm font-semibold mb-1 text-gray-700">Username</label>
+                    <input type="text" id="signupUsername" class="form-control" placeholder="Enter a username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword" class="block text-sm font-semibold mb-1 text-gray-700">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="signupPassword" class="form-control" placeholder="••••••••" required autocomplete="new-password">
+                        <span class="toggle-password" id="toggleSignupPassword">
+                            <i class="fas fa-eye-slash"></i>
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Sign Up</button>
+                <div class="text-center mt-4 text-sm">
+                    Already have an account? <span class="link" id="showLogin">Login</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Message Box -->
+    <div id="message-box" class="message-box"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cardContainer = document.getElementById('cardContainer');
+            const showSignupBtn = document.getElementById('showSignup');
+            const showLoginBtn = document.getElementById('showLogin');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const messageBox = document.getElementById('message-box');
+            const toggleLoginPassword = document.getElementById('toggleLoginPassword');
+            const toggleSignupPassword = document.getElementById('toggleSignupPassword');
+            const loginPasswordInput = document.getElementById('loginPassword');
+            const signupPasswordInput = document.getElementById('signupPassword');
+
+            // Simulate a simple user database. In a real app, this would be a backend database.
+            let users = [
+                { email: "john.doe@example.com", password: "password123", username: "johndoe" },
+                { email: "jane.smith@example.com", password: "password456", username: "janesmith" }
+            ];
+
+            // Function to show a message in the notification box
+            function showMessage(text, type = 'info') {
+                messageBox.textContent = text;
+                messageBox.className = `message-box show ${type}`;
+                setTimeout(() => {
+                    messageBox.classList.remove('show');
+                }, 4000);
+            }
+
+            // Function to toggle password visibility
+            function togglePasswordVisibility(input, icon) {
+                const type = input.type === 'password' ? 'text' : 'password';
+                input.type = type;
+                icon.className = `fas fa-eye${type === 'password' ? '-slash' : ''}`;
+            }
+
+            toggleLoginPassword.addEventListener('click', () => {
+                togglePasswordVisibility(loginPasswordInput, toggleLoginPassword.querySelector('i'));
+            });
+
+            toggleSignupPassword.addEventListener('click', () => {
+                togglePasswordVisibility(signupPasswordInput, toggleSignupPassword.querySelector('i'));
+            });
+
+            // Flip the card to show the sign-up form
+            showSignupBtn.addEventListener('click', () => {
+                cardContainer.classList.add('flipped');
+            });
+
+            // Flip the card to show the login form
+            showLoginBtn.addEventListener('click', () => {
+                cardContainer.classList.remove('flipped');
+            });
+
+            // Handle Login Form Submission
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+                const password = document.getElementById('loginPassword').value;
+
+                if (!email || !password) {
+                    showMessage('Please fill in all fields.', 'error');
+                    return;
+                }
+
+                const user = users.find(u => u.email === email);
+
+                if (!user) {
+                    // Email not found, show "need to sign up" message
+                    showMessage('Email not found. You need to sign up!', 'error');
+                } else if (user.password === password) {
+                    // Successful login
+                    showMessage('Login successful! Redirecting...', 'success');
+                    // In a real application, you would store a JWT or session token here
+                    localStorage.setItem('isLoggedIn', 'true');
+                    setTimeout(() => {
+                        window.location.href = '../index.html';
+                    }, 1000);
+                } else {
+                    showMessage('Incorrect password. Please try again.', 'error');
+                }
+            });
+
+            // Handle Sign Up Form Submission
+            signupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+                const username = document.getElementById('signupUsername').value.trim();
+                const password = document.getElementById('signupPassword').value;
+
+                if (!email || !username || !password) {
+                    showMessage('Please fill in all fields.', 'error');
+                    return;
+                }
+
+                if (users.find(u => u.email === email)) {
+                    showMessage('This email is already registered. Please log in.', 'error');
+                } else {
+                    // Add new user to the simulated database
+                    users.push({ email, username, password });
+                    showMessage('Account created successfully! Please log in.', 'success');
+                    cardContainer.classList.remove('flipped'); // Flip back to login
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - ShopVista</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html"><h2><i class="fas fa-store"></i> ShopVista</h2></a>
+            </div>
+            
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="shop.html" class="nav-link">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link active">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-icons">
+                    <a href="cart.html" class="nav-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <div class="user-menu">
+                        <button class="user-btn" id="userMenuBtn">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="login.html">Login</a>
+                            <a href="signup.html">Sign Up</a>
+                            <div class="user-logged-in" style="display: none;">
+                                <a href="profile.html">Profile</a>
+                                <a href="my-listings.html">My Listings</a>
+                                <a href="previous-purchases.html">My Purchases</a>
+                                <a href="#" id="logoutBtn">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="contact-page">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>We're here to help! Get in touch with our team</p>
+            </div>
+        </section>
+
+        <!-- Contact Content -->
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+                        <p>Have questions, feedback, or need support? We'd love to hear from you. Our team is here to help make your ShopVista experience amazing.</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Visit Our Office</h3>
+                                    <p>123 Commerce Street<br>
+                                    Business District<br>
+                                    Bengaluru, Karnataka 560001<br>
+                                    India</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Call Us</h3>
+                                    <p>Customer Support: <a href="tel:+911234567890">+91 12345 67890</a><br>
+                                    Business Hours: Mon-Fri 9AM-6PM IST<br>
+                                    Emergency Support: 24/7</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Email Us</h3>
+                                    <p>General: <a href="mailto:hello@shopvista.com">hello@shopvista.com</a><br>
+                                    Support: <a href="mailto:support@shopvista.com">support@shopvista.com</a><br>
+                                    Business: <a href="mailto:business@shopvista.com">business@shopvista.com</a></p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Business Hours</h3>
+                                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                                    Saturday: 10:00 AM - 4:00 PM<br>
+                                    Sunday: Closed<br>
+                                    <small>All times are in Indian Standard Time (IST)</small></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-contact">
+                            <h3>Follow Us</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-facebook"></i>
+                                    <span>Facebook</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-twitter"></i>
+                                    <span>Twitter</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>Instagram</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-linkedin"></i>
+                                    <span>LinkedIn</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-section">
+                        <div class="form-card">
+                            <h2>Send Us a Message</h2>
+                            <form id="contactForm" class="contact-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" id="firstName" name="firstName" class="form-control" required>
+                                        <div class="error-message" id="firstNameError"></div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" id="lastName" name="lastName" class="form-control" required>
+                                        <div class="error-message" id="lastNameError"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                    <div class="error-message" id="emailError"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone">Phone Number (Optional)</label>
+                                    <input type="tel" id="phone" name="phone" class="form-control">
+                                    <div class="error-message" id="phoneError"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <select id="subject" name="subject" class="form-control" required>
+                                        <option value="">Select a topic</option>
+                                        <option value="general">General Inquiry</option>
+                                        <option value="support">Technical Support</option>
+                                        <option value="billing">Billing & Payments</option>
+                                        <option value="seller">Become a Seller</option>
+                                        <option value="partnership">Partnership</option>
+                                        <option value="feedback">Feedback</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <div class="error-message" id="subjectError"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" class="form-control" rows="5" placeholder="Please describe your inquiry in detail..." required></textarea>
+                                    <div class="error-message" id="messageError"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="newsletter" name="newsletter">
+                                        <span class="checkmark"></span>
+                                        Subscribe to our newsletter for updates and offers
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary submit-btn" id="contactSubmitBtn">
+                                    <span>Send Message</span>
+                                    <i class="fas fa-paper-plane"></i>
+                                    <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> How do I create an account?</h3>
+                        <p>Click the "Sign Up" button in the top navigation, fill out the registration form with your details, and verify your email address.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> How do I start selling?</h3>
+                        <p>After creating an account, go to your profile and click "Create Listing" to add your products. Follow our seller guidelines for best results.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> What payment methods do you accept?</h3>
+                        <p>We accept all major credit cards, debit cards, net banking, UPI, and digital wallets for secure transactions.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> How long does shipping take?</h3>
+                        <p>Shipping times vary by seller and location. Most items are delivered within 3-7 business days within India.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> Can I return products?</h3>
+                        <p>Yes! Most items can be returned within 30 days of delivery. Check the product page for specific return policies.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> Is my personal information secure?</h3>
+                        <p>Absolutely. We use industry-standard encryption and security measures to protect your personal and financial information.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-store"></i> ShopVista</h3>
+                    <p>Your trusted online marketplace for quality products</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ShopVista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setupContactForm();
+            setupFAQInteractions();
+        });
+
+        function setupContactForm() {
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('contactSubmitBtn');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Clear previous errors
+                clearFormErrors();
+                
+                // Get form data
+                const formData = new FormData(form);
+                const data = {
+                    firstName: formData.get('firstName'),
+                    lastName: formData.get('lastName'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    subject: formData.get('subject'),
+                    message: formData.get('message'),
+                    newsletter: formData.get('newsletter')
+                };
+
+                // Validate form
+                if (!validateContactForm(data)) {
+                    return;
+                }
+
+                // Show loading state
+                setLoadingState(submitBtn, true);
+
+                // Simulate sending message
+                setTimeout(() => {
+                    setLoadingState(submitBtn, false);
+                    
+                    // Show success message
+                    window.ShopVistaAPI.showNotification(
+                        'Thank you! Your message has been sent successfully. We\'ll get back to you soon.',
+                        'success'
+                    );
+                    
+                    // Reset form
+                    form.reset();
+                }, 1500);
+            });
+        }
+
+        function validateContactForm(data) {
+            let isValid = true;
+
+            // First name validation
+            if (!data.firstName.trim()) {
+                showFieldError('firstName', 'First name is required');
+                isValid = false;
+            }
+
+            // Last name validation
+            if (!data.lastName.trim()) {
+                showFieldError('lastName', 'Last name is required');
+                isValid = false;
+            }
+
+            // Email validation
+            if (!data.email.trim()) {
+                showFieldError('email', 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(data.email)) {
+                showFieldError('email', 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Phone validation (optional)
+            if (data.phone.trim() && !isValidPhone(data.phone)) {
+                showFieldError('phone', 'Please enter a valid phone number');
+                isValid = false;
+            }
+
+            // Subject validation
+            if (!data.subject) {
+                showFieldError('subject', 'Please select a subject');
+                isValid = false;
+            }
+
+            // Message validation
+            if (!data.message.trim()) {
+                showFieldError('message', 'Message is required');
+                isValid = false;
+            } else if (data.message.trim().length < 10) {
+                showFieldError('message', 'Message must be at least 10 characters long');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+        }
+
+        function showFieldError(fieldName, message) {
+            const field = document.getElementById(fieldName);
+            const errorElement = document.getElementById(fieldName + 'Error');
+            
+            if (field) field.classList.add('error');
+            if (errorElement) errorElement.textContent = message;
+        }
+
+        function clearFormErrors() {
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(element => {
+                element.textContent = '';
+            });
+
+            const errorFields = document.querySelectorAll('.form-control.error');
+            errorFields.forEach(field => {
+                field.classList.remove('error');
+            });
+        }
+
+        function setLoadingState(button, isLoading) {
+            const span = button.querySelector('span');
+            const icon = button.querySelector('.fa-paper-plane');
+            const spinner = button.querySelector('.fa-spinner');
+            
+            if (isLoading) {
+                span.textContent = 'Sending...';
+                icon.style.display = 'none';
+                spinner.style.display = 'inline-block';
+                button.disabled = true;
+            } else {
+                span.textContent = 'Send Message';
+                icon.style.display = 'inline-block';
+                spinner.style.display = 'none';
+                button.disabled = false;
+            }
+        }
+
+        function setupFAQInteractions() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+        }
+    </script>
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 6rem 0 4rem;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-content {
+            padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            color: #1e293b;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info > p {
+            color: #64748b;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .contact-methods {
+            margin-bottom: 3rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            background: #f1f5f9;
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            color: #1e293b;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .contact-details a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .social-contact h3 {
+            color: #1e293b;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            color: #64748b;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #f1f5f9;
+            color: #6366f1;
+        }
+
+        .form-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-card h2 {
+            color: #1e293b;
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin-right: 0.5rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .faq-section {
+            background: #f8fafc;
+            padding: 4rem 0;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            color: #1e293b;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .faq-item h3 {
+            color: #1e293b;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .faq-item h3 i {
+            color: #6366f1;
+        }
+
+        .faq-item p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 4rem 0 2rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-method {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-icon {
+                margin: 0 auto 1rem;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</body>
+</html>
