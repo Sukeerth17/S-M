@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ShopVista</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .main-content {
+            padding: 4rem 0;
+            background: #f8fafc;
+        }
+
+        .about-section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .about-section.story {
+            text-align: center;
+        }
+
+        .about-story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .story-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 2rem;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .story-card h3 {
+            font-size: 1.5rem;
+            color: #6366f1;
+            margin-bottom: 1rem;
+        }
+
+        .story-card p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .team-avatar {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-size: 3rem;
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .value-card i {
+            font-size: 3rem;
+            color: #6366f1;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-card p {
+            font-size: 1rem;
+            color: #64748b;
+        }
+
+        @media (max-width: 768px) {
+            .about-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><i class="fas fa-store"></i> ShopVista</h2>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="shop.html" class="nav-link">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link active">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-icons">
+                    <a href="cart.html" class="nav-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <div class="user-menu">
+                        <button class="user-btn" id="userMenuBtn">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="login.html">Login</a>
+                            <a href="signup.html">Sign Up</a>
+                            <div class="user-logged-in" style="display: none;">
+                                <a href="profile.html">Profile</a>
+                                <a href="my-listings.html">My Listings</a>
+                                <a href="previous-purchases.html">My Purchases</a>
+                                <a href="#" id="logoutBtn">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section class="hero" style="background: linear-gradient(135deg, #a481e1 0%, #6366f1 100%);">
+        <div class="hero-content">
+            <div class="hero-text" style="grid-column: 1 / span 2; text-align: center;">
+                <h1>Our Story, Our Vision</h1>
+                <p>Learn more about the people behind ShopVista and our commitment to quality and community.</p>
+                <div class="hero-buttons">
+                    <a href="#mission" class="btn btn-outline">Our Mission</a>
+                    <a href="#team" class="btn btn-outline">Meet the Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Our Story Section -->
+            <section id="story" class="about-section story">
+                <h2>Our Journey</h2>
+                <p>ShopVista was born from a simple idea: to create a transparent, user-friendly marketplace where people can discover unique and high-quality products. Founded in 2025 by a team of passionate tech enthusiasts and seasoned entrepreneurs, we set out to build a platform that prioritizes both sellers and buyers.</p>
+                <p>We started with a small collection of handcrafted goods and have since grown to encompass a diverse range of categories, from electronics to fashion and home decor. Our journey has been about continuous learning, listening to our community, and adapting to their needs. We believe that every product has a story, and we are here to help tell it.</p>
+                <div class="about-story-grid">
+                    <div class="story-card">
+                        <h3>Chapter 1: The Spark</h3>
+                        <p>It all began in a small garage, fueled by countless cups of coffee and a shared vision. We saw a gap in the market for a platform that was not only easy to use but also fostered genuine connections between creators and consumers.</p>
+                    </div>
+                    <div class="story-card">
+                        <h3>Chapter 2: Building the Foundation</h3>
+                        <p>Our first challenge was to build a robust, secure, and scalable system from the ground up. We focused on creating a seamless user experience, ensuring that every interaction, from browsing to checkout, was smooth and enjoyable.</p>
+                    </div>
+                    <div class="story-card">
+                        <h3>Chapter 3: Community & Growth</h3>
+                        <p>As we grew, our community became our most valuable asset. We launched features like user dashboards and product management tools, allowing our sellers to thrive and our buyers to feel confident in their purchases.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Mission Section -->
+            <section id="mission" class="about-section">
+                <h2>Our Mission</h2>
+                <p>To empower creators and connect them with customers through a trusted, intuitive, and innovative online marketplace. We are committed to providing a platform that champions creativity, supports small businesses, and delivers an exceptional shopping experience for everyone.</p>
+                <p>We strive to be more than just a store; we aim to be a community where passion for quality products is celebrated. Our mission is built on three core pillars:</p>
+                <ul>
+                    <li>
+                        <h3>1. Empowering Sellers:</h3>
+                        <p>Providing the tools, resources, and visibility that small businesses need to succeed in a competitive digital world.</p>
+                    </li>
+                    <li>
+                        <h3>2. Delighting Buyers:</h3>
+                        <p>Offering a curated selection of products, a seamless shopping experience, and reliable customer support.</p>
+                    </li>
+                    <li>
+                        <h3>3. Fostering a Community:</h3>
+                        <p>Building a platform where everyone feels welcome, and where connections are made between people who share a love for unique products.</p>
+                    </li>
+                </ul>
+                <p>Our mission guides every decision we make, from the features we develop to the products we choose to highlight. We are dedicated to creating a positive impact, one sale at a time.</p>
+            </section>
+
+            <!-- Meet the Team Section -->
+            <section id="team" class="about-section">
+                <h2>Meet Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-avatar"><i class="fas fa-user-circle"></i></div>
+                        <h3>Jane Doe</h3>
+                        <p>Co-Founder & CEO</p>
+                        <p>Jane is the visionary behind ShopVista, leading the company with a focus on strategic growth and product innovation. Her passion for technology and small business drives our mission forward.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar"><i class="fas fa-user-circle"></i></div>
+                        <h3>John Smith</h3>
+                        <p>Co-Founder & CTO</p>
+                        <p>John is the technical architect of our platform. He ensures that our website is not only beautiful but also robust, secure, and scalable. His expertise is the backbone of our technology.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar"><i class="fas fa-user-circle"></i></div>
+                        <h3>Emily Chen</h3>
+                        <p>Head of Marketing</p>
+                        <p>Emily leads our marketing efforts, building our brand and connecting with our community. She is an expert in digital storytelling and is dedicated to helping our sellers reach their target audience.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar"><i class="fas fa-user-circle"></i></div>
+                        <h3>Alex Rodriguez</h3>
+                        <p>Community Manager</p>
+                        <p>Alex is our community champion, focused on fostering a supportive and engaging environment for our users. He handles customer relations and ensures everyone has a great experience.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar"><i class="fas fa-user-circle"></i></div>
+                        <h3>Sarah Lee</h3>
+                        <p>Product Designer</p>
+                        <p>Sarah is responsible for the look and feel of our platform. She creates intuitive and beautiful interfaces that make shopping and selling a joy. Her designs are at the heart of our user experience.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar"><i class="fas fa-user-circle"></i></div>
+                        <h3>Michael Brown</h3>
+                        <p>Developer</p>
+                        <p>Michael is a key member of our development team, constantly working to implement new features and improve our site's performance. He is dedicated to building a seamless and bug-free platform.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar"><i class="fas fa-user-circle"></i></div>
+                        <h3>Jessica Williams</h3>
+                        <p>Content Strategist</p>
+                        <p>Jessica crafts all our written content, from blog posts to product descriptions. She ensures that our voice is consistent and that our users have all the information they need to make informed decisions.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar"><i class="fas fa-user-circle"></i></div>
+                        <h3>David Miller</h3>
+                        <p>Data Analyst</p>
+                        <p>David is our data guru, providing insights that help us understand our users and make smart business decisions. He helps us optimize the platform to better serve both buyers and sellers.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Values Section -->
+            <section id="values" class="about-section">
+                <h2>Our Core Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <i class="fas fa-seedling"></i>
+                        <h3>Integrity</h3>
+                        <p>We operate with honesty and transparency, building trust with our community one interaction at a time.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-star"></i>
+                        <h3>Excellence</h3>
+                        <p>We are dedicated to providing a high-quality platform and exceptional service, always striving to exceed expectations.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>Community</h3>
+                        <p>We believe in the power of connection and are committed to fostering a supportive environment for our users.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Innovation</h3>
+                        <p>We are constantly exploring new ideas and technologies to improve our platform and stay ahead of the curve.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-heart"></i>
+                        <h3>Passion</h3>
+                        <p>We are passionate about what we do and believe in the products and people we work with.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Sustainability</h3>
+                        <p>We are committed to making a positive impact on the world, encouraging sustainable practices and ethical sourcing.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for the latest products and offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-store"></i> ShopVista</h3>
+                    <p>Your trusted online marketplace for quality products</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ShopVista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

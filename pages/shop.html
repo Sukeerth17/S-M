@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - ShopVista</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html"><h2><i class="fas fa-store"></i> ShopVista</h2></a>
+            </div>
+            
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="shop.html" class="nav-link active">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-icons">
+                    <a href="cart.html" class="nav-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <div class="user-menu">
+                        <button class="user-btn" id="userMenuBtn">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="login.html">Login</a>
+                            <a href="signup.html">Sign Up</a>
+                            <div class="user-logged-in" style="display: none;">
+                                <a href="profile.html">Profile</a>
+                                <a href="my-listings.html">My Listings</a>
+                                <a href="previous-purchases.html">My Purchases</a>
+                                <a href="#" id="logoutBtn">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="shop-page">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Shop Products</h1>
+                <p>Discover amazing products from our community</p>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="filters-section">
+            <div class="container">
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <label for="categoryFilter">Category:</label>
+                        <select id="categoryFilter" class="form-control">
+                            <option value="all">All Categories</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="fashion">Fashion</option>
+                            <option value="home">Home & Garden</option>
+                            <option value="sports">Sports</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="sortFilter">Sort by:</label>
+                        <select id="sortFilter" class="form-control">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="title">Title A-Z</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <button class="btn btn-secondary" id="clearFiltersBtn">Clear Filters</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section">
+            <div class="container">
+                <div class="products-header">
+                    <h2 id="productsTitle">All Products</h2>
+                    <div class="products-count">
+                        <span id="productsCount">0</span> products found
+                    </div>
+                </div>
+                
+                <div class="products-grid" id="productsContainer">
+                    <!-- Products will be loaded here -->
+                </div>
+                
+                <div class="pagination" id="pagination">
+                    <!-- Pagination will be added here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-store"></i> ShopVista</h3>
+                    <p>Your trusted online marketplace for quality products</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ShopVista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Shop page specific functionality
+        let currentPage = 1;
+        const productsPerPage = 12;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setupFilters();
+            loadProducts();
+        });
+
+        function setupFilters() {
+            const categoryFilter = document.getElementById('categoryFilter');
+            const sortFilter = document.getElementById('sortFilter');
+            const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+            const searchInput = document.querySelector('.search-input');
+
+            // Set initial filter values from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('category')) {
+                categoryFilter.value = urlParams.get('category');
+            }
+            if (urlParams.get('search')) {
+                searchInput.value = urlParams.get('search');
+            }
+
+            // Filter event listeners
+            categoryFilter.addEventListener('change', applyFilters);
+            sortFilter.addEventListener('change', applyFilters);
+            clearFiltersBtn.addEventListener('click', clearFilters);
+
+            // Search with debounce
+            let searchTimeout;
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    applyFilters();
+                }, 300);
+            });
+        }
+
+        function applyFilters() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const sortFilter = document.getElementById('sortFilter').value;
+            const searchQuery = document.querySelector('.search-input').value;
+
+            // Update URL
+            const url = new URL(window.location);
+            if (categoryFilter !== 'all') {
+                url.searchParams.set('category', categoryFilter);
+            } else {
+                url.searchParams.delete('category');
+            }
+            if (searchQuery) {
+                url.searchParams.set('search', searchQuery);
+            } else {
+                url.searchParams.delete('search');
+            }
+            window.history.replaceState({}, '', url);
+
+            // Apply filters
+            let filtered = window.appFunctions.products().filter(product => {
+                const matchesCategory = categoryFilter === 'all' || product.category === categoryFilter;
+                const matchesSearch = !searchQuery || 
+                    product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    product.description.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            // Apply sorting
+            switch (sortFilter) {
+                case 'newest':
+                    filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                    break;
+                case 'oldest':
+                    filtered.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+                    break;
+                case 'price-low':
+                    filtered.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    filtered.sort((a, b) => b.price - a.price);
+                    break;
+                case 'title':
+                    filtered.sort((a, b) => a.title.localeCompare(b.title));
+                    break;
+            }
+
+            displayProducts(filtered);
+            updateProductsCount(filtered.length);
+        }
+
+        function clearFilters() {
+            document.getElementById('categoryFilter').value = 'all';
+            document.getElementById('sortFilter').value = 'newest';
+            document.querySelector('.search-input').value = '';
+            
+            // Clear URL params
+            window.history.replaceState({}, '', window.location.pathname);
+            
+            applyFilters();
+        }
+
+        function loadProducts() {
+            applyFilters();
+        }
+
+        function displayProducts(productsList) {
+            const container = document.getElementById('productsContainer');
+            
+            if (productsList.length === 0) {
+                container.innerHTML = `
+                    <div class="no-products">
+                        <i class="fas fa-search"></i>
+                        <h3>No products found</h3>
+                        <p>Try adjusting your search criteria or browse different categories.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Pagination
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const paginatedProducts = productsList.slice(startIndex, endIndex);
+
+            container.innerHTML = paginatedProducts.map(product => createProductCard(product)).join('');
+
+            // Add event listeners
+            container.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (!e.target.closest('.btn')) {
+                        const productId = parseInt(card.dataset.productId);
+                        window.location.href = `product-detail.html?id=${productId}`;
+                    }
+                });
+            });
+
+            container.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const productId = parseInt(btn.dataset.productId);
+                    window.appFunctions.addToCart(productId);
+                });
+            });
+
+            // Setup pagination
+            setupPagination(productsList.length);
+        }
+
+        function createProductCard(product) {
+            return `
+                <div class="product-card" data-product-id="${product.id}">
+                    <div class="product-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-price">${product.price.toFixed(2)}</p>
+                        <p class="product-category">${window.appFunctions.getCategoryLabel(product.category)}</p>
+                        <div class="product-actions">
+                            <button class="btn btn-primary add-to-cart-btn" data-product-id="${product.id}">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                            <button class="btn btn-secondary view-details-btn">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function setupPagination(totalProducts) {
+            const pagination = document.getElementById('pagination');
+            const totalPages = Math.ceil(totalProducts / productsPerPage);
+
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+
+            let paginationHTML = '<div class="pagination-controls">';
+
+            // Previous button
+            if (currentPage > 1) {
+                paginationHTML += `<button class="btn btn-secondary" onclick="changePage(${currentPage - 1})">Previous</button>`;
+            }
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    paginationHTML += `<button class="btn btn-primary">${i}</button>`;
+                } else {
+                    paginationHTML += `<button class="btn btn-secondary" onclick="changePage(${i})">${i}</button>`;
+                }
+            }
+
+            // Next button
+            if (currentPage < totalPages) {
+                paginationHTML += `<button class="btn btn-secondary" onclick="changePage(${currentPage + 1})">Next</button>`;
+            }
+
+            paginationHTML += '</div>';
+            pagination.innerHTML = paginationHTML;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            applyFilters();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateProductsCount(count) {
+            document.getElementById('productsCount').textContent = count;
+            
+            const categoryFilter = document.getElementById('categoryFilter');
+            const searchQuery = document.querySelector('.search-input').value;
+            
+            let title = 'All Products';
+            if (categoryFilter.value !== 'all') {
+                title = window.appFunctions.getCategoryLabel(categoryFilter.value);
+            }
+            if (searchQuery) {
+                title += ` - "${searchQuery}"`;
+            }
+            
+            document.getElementById('productsTitle').textContent = title;
+        }
+    </script>
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 6rem 0 4rem;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .filters-section {
+            background: #f8fafc;
+            padding: 2rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .filters-container {
+            display: flex;
+            gap: 2rem;
+            align-items: end;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .filter-group select {
+            min-width: 180px;
+        }
+
+        .products-section {
+            padding: 3rem 0;
+        }
+
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .products-header h2 {
+            color: #1e293b;
+            font-size: 2rem;
+        }
+
+        .products-count {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .no-products {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #64748b;
+        }
+
+        .no-products i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .no-products h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pagination {
+            margin-top: 3rem;
+        }
+
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .pagination-controls .btn {
+            min-width: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 4rem 0 2rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .filters-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group select {
+                min-width: 100%;
+            }
+
+            .products-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</body>
+</html>
