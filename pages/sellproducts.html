@@ -3,470 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product - Used Goods Marketplace</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #ffffff;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation Styles */
-        .navbar {
-            background: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            height: 80px;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-            height: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-logo h2 {
-            color: #6366f1;
-            font-weight: 700;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-logo a {
-            text-decoration: none;
-        }
-
-        .nav-menu {
-            display: flex;
-        }
-
-        .nav-list {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: #64748b;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: #6366f1;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #6366f1;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-icons {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-icon {
-            position: relative;
-            color: #64748b;
-            font-size: 1.2rem;
-            text-decoration: none;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .nav-icon:hover {
-            color: #6366f1;
-            background: rgba(99, 102, 241, 0.1);
-        }
-
-        /* Button Styles */
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: #6366f1;
-            color: white;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn-primary:hover {
-            background: #5855eb;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
-        }
-
-        .btn-secondary {
-            background: #f8fafc;
-            color: #64748b;
-            border: 1px solid #e2e8f0;
-        }
-
-        .btn-secondary:hover {
-            background: #e2e8f0;
-            color: #475569;
-        }
-
-        /* Form Styles */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #374151;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            background: #ffffff;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        .form-control.error {
-            border-color: #ef4444;
-        }
-
-        .error-message {
-            color: #ef4444;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-            display: block;
-        }
-
-        .required {
-            color: #ef4444;
-        }
-
-        /* Page Header */
-        .page-header {
-            margin-top: 80px;
-            padding: 3rem 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Form Section */
-        .form-section {
-            padding: 4rem 0;
-            background: #f8fafc;
-            min-height: 100vh;
-        }
-
-        .form-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            padding: 2rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .form-full {
-            grid-column: 1 / -1;
-        }
-
-        /* Category Selection */
-        .category-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        .category-item {
-            position: relative;
-        }
-
-        .category-item input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            cursor: pointer;
-        }
-
-        .category-label {
-            display: block;
-            padding: 1rem;
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .category-item input[type="radio"]:checked + .category-label {
-            background: #6366f1;
-            border-color: #6366f1;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-
-        .category-icon {
-            display: block;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Condition Selection */
-        .condition-selection {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        .condition-item {
-            position: relative;
-        }
-
-        .condition-item input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            cursor: pointer;
-        }
-
-        .condition-label {
-            display: block;
-            padding: 0.75rem;
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .condition-item input[type="radio"]:checked + .condition-label {
-            background: #6366f1;
-            border-color: #6366f1;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-
-        /* Image Upload */
-        .image-upload {
-            position: relative;
-            border: 2px dashed #6366f1;
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            background: rgba(99, 102, 241, 0.05);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            margin-top: 0.5rem;
-        }
-
-        .image-upload:hover {
-            background: rgba(99, 102, 241, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .image-upload input[type="file"] {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-
-        .upload-content {
-            color: #6366f1;
-        }
-
-        .upload-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Success Message */
-        .success-message {
-            background: #d1fae5;
-            color: #047857;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            border-left: 4px solid #10b981;
-            display: none;
-        }
-
-        /* Price Input */
-        .price-input {
-            position: relative;
-        }
-
-        .price-input::before {
-            content: '$';
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-weight: 600;
-            color: #64748b;
-            z-index: 1;
-        }
-
-        .price-input .form-control {
-            padding-left: 2rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 0 1rem;
-            }
-
-            .page-header h1 {
-                font-size: 2rem;
-            }
-
-            .form-container {
-                padding: 1.5rem;
-                margin: 0 1rem;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .category-selection {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .condition-selection {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .page-header {
-                padding: 2rem 0;
-            }
-
-            .page-header h1 {
-                font-size: 1.75rem;
-            }
-
-            .form-section {
-                padding: 2rem 0;
-            }
-
-            .category-selection {
-                grid-template-columns: 1fr;
-            }
-
-            .condition-selection {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Sell Your Product - ShopVista</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -476,7 +16,7 @@
                 <a href="../index.html"><h2><i class="fas fa-store"></i> ShopVista</h2></a>
             </div>
             
-            <div class="nav-menu">
+           <div class="nav-menu">
                 <ul class="nav-list">
                     <li class="nav-item">
                         <a href="../index.html" class="nav-link">Home</a>
@@ -542,26 +82,30 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Add Your Product</h1>
-            <p>List your used goods and connect with buyers in your community. Turn your unused items into cash!</p>
+            <h1>Sell Your Product</h1>
+            <p>List your items and reach thousands of buyers. Turn your unused goods into cash!</p>
         </div>
     </section>
 
     <!-- Form Section -->
-    <section class="form-section">
+    <section class="sell-form-section">
         <div class="container">
-            <div class="form-container">
+            <div class="sell-form-container">
                 <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i> Product added successfully! Your listing is now live and visible to buyers.
+                    <i class="fas fa-check-circle"></i> 
+                    Product listed successfully! Your item is now live and visible to buyers.
                 </div>
 
-                <form id="addProductForm">
+                <form id="sellProductForm">
+                    <!-- Product Title -->
                     <div class="form-group">
                         <label for="productTitle">Product Title <span class="required">*</span></label>
                         <input type="text" class="form-control" id="productTitle" name="productTitle" 
                                placeholder="e.g., iPhone 12 Pro Max 128GB Space Gray" required>
+                        <div class="error-message" id="productTitleError"></div>
                     </div>
 
+                    <!-- Category Selection -->
                     <div class="form-group">
                         <label>Category <span class="required">*</span></label>
                         <div class="category-selection">
@@ -573,17 +117,24 @@
                                 </label>
                             </div>
                             <div class="category-item">
-                                <input type="radio" id="furniture" name="category" value="furniture">
-                                <label for="furniture" class="category-label">
-                                    <span class="category-icon"><i class="fas fa-couch"></i></span>
-                                    Furniture
+                                <input type="radio" id="fashion" name="category" value="fashion">
+                                <label for="fashion" class="category-label">
+                                    <span class="category-icon"><i class="fas fa-tshirt"></i></span>
+                                    Fashion
                                 </label>
                             </div>
                             <div class="category-item">
-                                <input type="radio" id="clothing" name="category" value="clothing">
-                                <label for="clothing" class="category-label">
-                                    <span class="category-icon"><i class="fas fa-tshirt"></i></span>
-                                    Clothing
+                                <input type="radio" id="home" name="category" value="home">
+                                <label for="home" class="category-label">
+                                    <span class="category-icon"><i class="fas fa-home"></i></span>
+                                    Home & Garden
+                                </label>
+                            </div>
+                            <div class="category-item">
+                                <input type="radio" id="sports" name="category" value="sports">
+                                <label for="sports" class="category-label">
+                                    <span class="category-icon"><i class="fas fa-dumbbell"></i></span>
+                                    Sports
                                 </label>
                             </div>
                             <div class="category-item">
@@ -594,42 +145,25 @@
                                 </label>
                             </div>
                             <div class="category-item">
-                                <input type="radio" id="sports" name="category" value="sports">
-                                <label for="sports" class="category-label">
-                                    <span class="category-icon"><i class="fas fa-basketball-ball"></i></span>
-                                    Sports
-                                </label>
-                            </div>
-                            <div class="category-item">
                                 <input type="radio" id="automotive" name="category" value="automotive">
                                 <label for="automotive" class="category-label">
                                     <span class="category-icon"><i class="fas fa-car"></i></span>
                                     Automotive
                                 </label>
                             </div>
-                            <div class="category-item">
-                                <input type="radio" id="home" name="category" value="home">
-                                <label for="home" class="category-label">
-                                    <span class="category-icon"><i class="fas fa-home"></i></span>
-                                    Home
-                                </label>
-                            </div>
-                            <div class="category-item">
-                                <input type="radio" id="other" name="category" value="other">
-                                <label for="other" class="category-label">
-                                    <span class="category-icon"><i class="fas fa-box"></i></span>
-                                    Other
-                                </label>
-                            </div>
                         </div>
+                        <div class="error-message" id="categoryError"></div>
                     </div>
 
+                    <!-- Description -->
                     <div class="form-group">
                         <label for="description">Description <span class="required">*</span></label>
                         <textarea class="form-control" id="description" name="description" rows="5" 
                                   placeholder="Describe your item's features, condition, and any relevant details that would help buyers..." required></textarea>
+                        <div class="error-message" id="descriptionError"></div>
                     </div>
 
+                    <!-- Price and Brand -->
                     <div class="form-row">
                         <div class="form-group">
                             <label for="price">Price <span class="required">*</span></label>
@@ -637,36 +171,53 @@
                                 <input type="number" class="form-control" id="price" name="price" 
                                        placeholder="0.00" step="0.01" min="0" required>
                             </div>
+                            <div class="error-message" id="priceError"></div>
                         </div>
                         <div class="form-group">
                             <label for="brand">Brand (Optional)</label>
                             <input type="text" class="form-control" id="brand" name="brand" 
                                    placeholder="e.g., Apple, Samsung, IKEA">
+                            <div class="error-message" id="brandError"></div>
                         </div>
                     </div>
 
+                    <!-- Condition -->
                     <div class="form-group">
                         <label>Condition <span class="required">*</span></label>
                         <div class="condition-selection">
                             <div class="condition-item">
                                 <input type="radio" id="likeNew" name="condition" value="like-new" required>
-                                <label for="likeNew" class="condition-label">Like New</label>
+                                <label for="likeNew" class="condition-label">
+                                    <span class="condition-text">Like New</span>
+                                    <small>Barely used, no visible wear</small>
+                                </label>
                             </div>
                             <div class="condition-item">
                                 <input type="radio" id="excellent" name="condition" value="excellent">
-                                <label for="excellent" class="condition-label">Excellent</label>
+                                <label for="excellent" class="condition-label">
+                                    <span class="condition-text">Excellent</span>
+                                    <small>Minor wear, works perfectly</small>
+                                </label>
                             </div>
                             <div class="condition-item">
                                 <input type="radio" id="good" name="condition" value="good">
-                                <label for="good" class="condition-label">Good</label>
+                                <label for="good" class="condition-label">
+                                    <span class="condition-text">Good</span>
+                                    <small>Some wear, functions well</small>
+                                </label>
                             </div>
                             <div class="condition-item">
                                 <input type="radio" id="fair" name="condition" value="fair">
-                                <label for="fair" class="condition-label">Fair</label>
+                                <label for="fair" class="condition-label">
+                                    <span class="condition-text">Fair</span>
+                                    <small>Visible wear, still functional</small>
+                                </label>
                             </div>
                         </div>
+                        <div class="error-message" id="conditionError"></div>
                     </div>
 
+                    <!-- Image Upload -->
                     <div class="form-group">
                         <label for="images">Product Images</label>
                         <div class="image-upload">
@@ -679,13 +230,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="error-message" id="imagesError"></div>
                     </div>
 
+                    <!-- Location and Contact -->
                     <div class="form-row">
                         <div class="form-group">
                             <label for="location">Location <span class="required">*</span></label>
                             <input type="text" class="form-control" id="location" name="location" 
-                                   placeholder="City, State" required>
+                                   placeholder="City, State" value="Bengaluru, Karnataka" required>
+                            <div class="error-message" id="locationError"></div>
                         </div>
                         <div class="form-group">
                             <label for="contactMethod">Preferred Contact</label>
@@ -697,9 +251,19 @@
                         </div>
                     </div>
 
-                    <div class="form-group" style="text-align: center; margin-top: 2rem;">
-                        <button type="submit" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">
-                            <i class="fas fa-plus-circle"></i> List My Product
+                    <!-- Tags -->
+                    <div class="form-group">
+                        <label for="tags">Tags (Optional)</label>
+                        <input type="text" class="form-control" id="tags" name="tags" 
+                               placeholder="e.g., wireless, gaming, vintage (separated by commas)">
+                        <small class="form-help">Add relevant tags to help buyers find your product</small>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary submit-btn" id="sellSubmitBtn">
+                            <span><i class="fas fa-plus-circle"></i> List My Product</span>
+                            <i class="fas fa-spinner fa-spin" style="display: none;"></i>
                         </button>
                     </div>
                 </form>
@@ -707,81 +271,544 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-store"></i> ShopVista</h3>
+                    <p>Your trusted online marketplace for quality products</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ShopVista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
     <script>
-        const form = document.getElementById('addProductForm');
-        const successMessage = document.getElementById('successMessage');
-        const imageInput = document.getElementById('images');
-        const uploadContent = document.querySelector('.upload-content');
-
-        // Handle image upload preview
-        imageInput.addEventListener('change', function(e) {
-            const files = e.target.files;
-            if (files.length > 0) {
-                uploadContent.innerHTML = `
-                    <div class="upload-icon"><i class="fas fa-check-circle"></i></div>
-                    <div>
-                        <strong>${files.length} image(s) selected</strong><br>
-                        <small>Ready to upload</small>
-                    </div>
-                `;
-                uploadContent.parentElement.style.borderColor = '#10b981';
-                uploadContent.parentElement.style.background = 'rgba(16, 185, 129, 0.05)';
-            }
-        });
-
-        // Handle form submission
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(form);
-            const productData = {};
-            
-            // Convert FormData to regular object
-            for (let [key, value] of formData.entries()) {
-                productData[key] = value;
-            }
-            
-            console.log('Product data:', productData);
-            
-            // Show success message
-            successMessage.style.display = 'block';
-            successMessage.scrollIntoView({ behavior: 'smooth' });
-            
-            // Reset form after success
-            setTimeout(() => {
-                form.reset();
-                
-                // Reset image upload display
-                uploadContent.innerHTML = `
-                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <div>
-                        <strong>Click to upload photos</strong><br>
-                        <small>Add up to 5 images (JPG, PNG, max 5MB each)</small>
-                    </div>
-                `;
-                uploadContent.parentElement.style.borderColor = '#6366f1';
-                uploadContent.parentElement.style.background = 'rgba(99, 102, 241, 0.05)';
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 5000);
-            }, 2000);
-        });
-
-        // Add smooth loading animation
         document.addEventListener('DOMContentLoaded', function() {
-            const formContainer = document.querySelector('.form-container');
-            formContainer.style.opacity = '0';
-            formContainer.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                formContainer.style.transition = 'all 0.6s ease';
-                formContainer.style.opacity = '1';
-                formContainer.style.transform = 'translateY(0)';
-            }, 200);
+            setupSellForm();
+            setupImageUpload();
         });
+
+        function setupSellForm() {
+            const form = document.getElementById('sellProductForm');
+            const submitBtn = document.getElementById('sellSubmitBtn');
+            const successMessage = document.getElementById('successMessage');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Clear previous errors
+                clearFormErrors();
+                
+                // Get form data
+                const formData = new FormData(form);
+                const productData = {
+                    title: formData.get('productTitle'),
+                    category: formData.get('category'),
+                    description: formData.get('description'),
+                    price: formData.get('price'),
+                    brand: formData.get('brand'),
+                    condition: formData.get('condition'),
+                    location: formData.get('location'),
+                    contactMethod: formData.get('contactMethod'),
+                    tags: formData.get('tags'),
+                    images: formData.getAll('images')
+                };
+
+                // Validate form
+                if (!validateSellForm(productData)) {
+                    return;
+                }
+
+                // Show loading state
+                setLoadingState(submitBtn, true);
+
+                // Simulate product creation
+                setTimeout(() => {
+                    // Add to products if API is available
+                    if (window.ShopVistaAPI) {
+                        const newProduct = {
+                            id: Date.now(),
+                            title: productData.title,
+                            description: productData.description,
+                            price: parseFloat(productData.price),
+                            category: productData.category,
+                            condition: productData.condition,
+                            brand: productData.brand,
+                            location: productData.location,
+                            tags: productData.tags ? productData.tags.split(',').map(t => t.trim()) : [],
+                            seller: window.ShopVistaAPI.getCurrentUser()?.username || 'demo_user',
+                            createdAt: new Date(),
+                            image: "placeholder"
+                        };
+
+                        // Add to products array
+                        const products = window.ShopVistaAPI.getProducts();
+                        products.push(newProduct);
+                    }
+
+                    setLoadingState(submitBtn, false);
+                    
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                    
+                    if (window.ShopVistaAPI) {
+                        window.ShopVistaAPI.showNotification('Product listed successfully!', 'success');
+                    }
+                    
+                    // Reset form after success
+                    setTimeout(() => {
+                        form.reset();
+                        resetImageUpload();
+                        
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 5000);
+                    }, 2000);
+                    
+                }, 1500);
+            });
+        }
+
+        function validateSellForm(data) {
+            let isValid = true;
+
+            // Title validation
+            if (!data.title.trim()) {
+                showFieldError('productTitle', 'Product title is required');
+                isValid = false;
+            } else if (data.title.trim().length < 5) {
+                showFieldError('productTitle', 'Title must be at least 5 characters long');
+                isValid = false;
+            }
+
+            // Category validation
+            if (!data.category) {
+                showFieldError('category', 'Please select a category');
+                isValid = false;
+            }
+
+            // Description validation
+            if (!data.description.trim()) {
+                showFieldError('description', 'Product description is required');
+                isValid = false;
+            } else if (data.description.trim().length < 20) {
+                showFieldError('description', 'Description must be at least 20 characters long');
+                isValid = false;
+            }
+
+            // Price validation
+            if (!data.price || parseFloat(data.price) <= 0) {
+                showFieldError('price', 'Please enter a valid price');
+                isValid = false;
+            }
+
+            // Condition validation
+            if (!data.condition) {
+                showFieldError('condition', 'Please select the item condition');
+                isValid = false;
+            }
+
+            // Location validation
+            if (!data.location.trim()) {
+                showFieldError('location', 'Location is required');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function setupImageUpload() {
+            const imageInput = document.getElementById('images');
+            const uploadContent = document.querySelector('.upload-content');
+
+            imageInput.addEventListener('change', function(e) {
+                const files = e.target.files;
+                if (files.length > 0) {
+                    if (files.length > 5) {
+                        showFieldError('images', 'You can upload a maximum of 5 images');
+                        this.value = '';
+                        return;
+                    }
+
+                    let validFiles = true;
+                    for (let file of files) {
+                        if (file.size > 5 * 1024 * 1024) { // 5MB
+                            showFieldError('images', 'Each image must be smaller than 5MB');
+                            validFiles = false;
+                            break;
+                        }
+                    }
+
+                    if (validFiles) {
+                        uploadContent.innerHTML = `
+                            <div class="upload-icon"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <strong>${files.length} image(s) selected</strong><br>
+                                <small>Ready to upload</small>
+                            </div>
+                        `;
+                        uploadContent.parentElement.style.borderColor = '#22c55e';
+                        uploadContent.parentElement.style.background = 'rgba(34, 197, 94, 0.05)';
+                        clearFieldError('images');
+                    } else {
+                        this.value = '';
+                        resetImageUpload();
+                    }
+                }
+            });
+        }
+
+        function resetImageUpload() {
+            const uploadContent = document.querySelector('.upload-content');
+            uploadContent.innerHTML = `
+                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <div>
+                    <strong>Click to upload photos</strong><br>
+                    <small>Add up to 5 images (JPG, PNG, max 5MB each)</small>
+                </div>
+            `;
+            uploadContent.parentElement.style.borderColor = '#6366f1';
+            uploadContent.parentElement.style.background = 'rgba(99, 102, 241, 0.05)';
+        }
+
+        function showFieldError(fieldName, message) {
+            const field = document.getElementById(fieldName);
+            const errorElement = document.getElementById(fieldName + 'Error');
+            
+            if (field) {
+                field.classList.add('error');
+                field.focus();
+            }
+            if (errorElement) errorElement.textContent = message;
+        }
+
+        function clearFieldError(fieldName) {
+            const field = document.getElementById(fieldName);
+            const errorElement = document.getElementById(fieldName + 'Error');
+            
+            if (field) field.classList.remove('error');
+            if (errorElement) errorElement.textContent = '';
+        }
+
+        function clearFormErrors() {
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(element => {
+                element.textContent = '';
+            });
+
+            const errorFields = document.querySelectorAll('.form-control.error');
+            errorFields.forEach(field => {
+                field.classList.remove('error');
+            });
+        }
+
+        function setLoadingState(button, isLoading) {
+            const span = button.querySelector('span');
+            const spinner = button.querySelector('.fa-spinner');
+            
+            if (isLoading) {
+                span.style.display = 'none';
+                spinner.style.display = 'inline-block';
+                button.disabled = true;
+                button.style.cursor = 'not-allowed';
+            } else {
+                span.style.display = 'inline-block';
+                spinner.style.display = 'none';
+                button.disabled = false;
+                button.style.cursor = 'pointer';
+            }
+        }
     </script>
+
+    <style>
+        /* Sell Page Specific Styles */
+        .sell-form-section {
+            padding: 2rem 0 4rem;
+            background: var(--secondary-color);
+            min-height: calc(100vh - 80px);
+        }
+
+        .sell-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-light);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 2.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .required {
+            color: var(--error-color);
+        }
+
+        /* Category Selection */
+        .category-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .category-item {
+            position: relative;
+        }
+
+        .category-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .category-label {
+            display: block;
+            padding: 1rem;
+            background: var(--secondary-color);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            height: 100%;
+        }
+
+        .category-item input[type="radio"]:checked + .category-label {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .category-icon {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Condition Selection */
+        .condition-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .condition-item {
+            position: relative;
+        }
+
+        .condition-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .condition-label {
+            display: block;
+            padding: 1rem;
+            background: var(--secondary-color);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            height: 100%;
+        }
+
+        .condition-item input[type="radio"]:checked + .condition-label {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .condition-text {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .condition-label small {
+            opacity: 0.8;
+            font-size: 0.85rem;
+        }
+
+        /* Image Upload */
+        .image-upload {
+            position: relative;
+            border: 2px dashed var(--primary-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            background: rgba(99, 102, 241, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .image-upload:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .image-upload input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+        }
+
+        .upload-content {
+            color: var(--primary-color);
+            pointer-events: none;
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Price Input */
+        .price-input {
+            position: relative;
+        }
+
+        .price-input::before {
+            content: ';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: 600;
+            color: var(--text-secondary);
+            z-index: 1;
+        }
+
+        .price-input .form-control {
+            padding-left: 2rem;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #d1fae5;
+            color: #047857;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #10b981;
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Form Submit */
+        .form-submit {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .submit-btn {
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .form-help {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sell-form-container {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .category-selection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .condition-selection {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sell-form-section {
+                padding: 1rem 0 2rem;
+            }
+
+            .category-selection {
+                grid-template-columns: 1fr;
+            }
+
+            .submit-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </body>
 </html>
