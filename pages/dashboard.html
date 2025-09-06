@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - EcoFinds</title>
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Tailwind CSS CDN for quick styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /*
+         * File: dashboard.html (Internal Stylesheet)
+         * Description: Stylesheet for the user dashboard page.
+         *
+         * TABLE OF CONTENTS:
+         * 1.0 Global Variables & Base Styles
+         * 2.0 Navigation Bar
+         * 3.0 Dashboard Layout
+         * 4.0 Profile Card & Form
+         * 5.0 Stats Section
+         * 6.0 Responsive Design
+         * 7.0 Animations
+         */
+
+        /* =========================================================================
+           1.0 Global Variables & Base Styles
+           ========================================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #5855eb;
+            --secondary-color: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --bg-light: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-medium: 0 10px 25px rgba(0,0,0,0.15);
+            --font-family: 'Inter', sans-serif;
+            --error-color: #ef4444;
+            --success-color: #22c55e;
+            --info-color: #3b82f6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            background: var(--secondary-color);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            padding-top: 80px; /* Space for fixed navbar */
+        }
+
+        /* =========================================================================
+           2.0 Navigation Bar
+           ========================================================================= */
+
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 80px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            height: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: var(--secondary-color);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 200px;
+            padding: 0.25rem;
+            font-size: 14px;
+        }
+
+        .search-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-icon {
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-icon:hover {
+            color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--error-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .user-menu {
+            position: relative;
+        }
+
+        .user-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .user-btn:hover {
+            color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 120%;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-medium);
+            padding: 1rem;
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .user-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .user-dropdown a {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .user-dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        .user-dropdown a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-secondary);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+
+        /* =========================================================================
+           3.0 Dashboard Layout
+           ========================================================================= */
+
+        main.dashboard-content {
+            padding: 2rem;
+            flex-grow: 1;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .dashboard-header {
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .dashboard-header p {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .profile-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .profile-card,
+        .stats-card {
+            background-color: var(--bg-light);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .profile-card:hover,
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .profile-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .profile-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .profile-info p {
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .btn-edit {
+            background-color: var(--secondary-color);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-edit:hover {
+            background-color: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        /* =========================================================================
+           4.0 Profile Card & Form
+           ========================================================================= */
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .edit-form-container {
+            display: none; /* Initially hidden */
+            margin-top: 2rem;
+        }
+
+        .edit-form-container.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-save, .btn-cancel {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-save {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-save:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-cancel {
+            background-color: var(--secondary-color);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-cancel:hover {
+            background-color: var(--border-color);
+        }
+
+        /* =========================================================================
+           5.0 Stats Section
+           ========================================================================= */
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stats-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .stats-card .icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .stats-card .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-card .label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* =========================================================================
+           6.0 Responsive Design
+           ========================================================================= */
+
+        @media (min-width: 768px) {
+            .profile-section {
+                grid-template-columns: 1fr 2fr;
+                align-items: start;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            .search-container {
+                display: none;
+            }
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                padding: 1rem;
+            }
+            .nav-menu.active {
+                display: block;
+            }
+            .nav-list {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* =========================================================================
+           7.0 Animations
+           ========================================================================= */
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html"><h2><i class="fas fa-store"></i> ShopVista</h2></a>
+            </div>
+            
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="shop.html" class="nav-link">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link active">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="sellproducts.html" class="nav-link">Sell</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-icons">
+                    <a href="cart.html" class="nav-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <div class="user-menu">
+                        <button class="user-btn" id="userMenuBtn">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="login.html">Login</a>
+                            <a href="signup.html">Sign Up</a>
+                            <div class="user-logged-in" style="display: none;">
+                                <a href="profile.html">Profile</a>
+                                <a href="my-listings.html">My Listings</a>
+                                <a href="previous-purchases.html">My Purchases</a>
+                                <a href="#" id="logoutBtn">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="dashboard-content">
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <h1>My Dashboard</h1>
+                <p>Welcome back, <span id="welcomeUsername">User</span>! You've been a member for <span id="memberDuration">...</span></p>
+            </div>
+
+            <!-- Profile and Stats Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Profile Card -->
+                <div class="lg:col-span-2 profile-card" id="profileCard">
+                    <div class="flex items-center space-x-6">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h2 class="text-xl font-bold text-gray-800" id="profileUsernameDisplay"></h2>
+                            <p class="text-sm text-gray-500" id="profileEmailDisplay"></p>
+                        </div>
+                        <button class="btn-edit" id="editProfileBtn">
+                            <i class="fas fa-edit mr-2"></i>Edit Profile
+                        </button>
+                    </div>
+
+                    <!-- Edit Profile Form (Initially hidden) -->
+                    <div id="editFormContainer" class="edit-form-container">
+                        <form id="editProfileForm" class="mt-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="form-group">
+                                    <label for="editUsername">Username</label>
+                                    <input type="text" id="editUsername" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editEmail">Email</label>
+                                    <input type="email" id="editEmail" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-save">Save Changes</button>
+                                <button type="button" class="btn-cancel" id="cancelEditBtn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="stats-card">
+                    <div class="stats-section">
+                        <div class="stats-card">
+                            <div class="icon">
+                                <i class="fas fa-tag"></i>
+                            </div>
+                            <div class="value" id="productsSoldValue">0</div>
+                            <div class="label">Products Sold</div>
+                        </div>
+                        <div class="stats-card">
+                            <div class="icon">
+                                <i class="fas fa-shopping-bag"></i>
+                            </div>
+                            <div class="value" id="productsBoughtValue">0</div>
+                            <div class="label">Products Bought</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Message Box for Notifications -->
+    <div id="message-box" class="message-box"></div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global variables provided by the environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // --- Mock Data ---
+        // In a real application, this data would be fetched from Firestore.
+        const mockUser = {
+            username: "Jane Doe",
+            email: "jane.doe@example.com",
+            memberSince: "2024-03-15", // YYYY-MM-DD
+            productsSold: 12,
+            productsBought: 5
+        };
+        
+        // --- DOM Elements ---
+        const welcomeUsernameEl = document.getElementById('welcomeUsername');
+        const memberDurationEl = document.getElementById('memberDuration');
+        const profileUsernameDisplayEl = document.getElementById('profileUsernameDisplay');
+        const profileEmailDisplayEl = document.getElementById('profileEmailDisplay');
+        const productsSoldValueEl = document.getElementById('productsSoldValue');
+        const productsBoughtValueEl = document.getElementById('productsBoughtValue');
+
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const editFormContainer = document.getElementById('editFormContainer');
+        const editProfileForm = document.getElementById('editProfileForm');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+        const editUsernameInput = document.getElementById('editUsername');
+        const editEmailInput = document.getElementById('editEmail');
+        
+        // --- Helper Functions ---
+        function showMessage(text, type = 'info') {
+            const messageBox = document.getElementById('message-box');
+            messageBox.textContent = text;
+            messageBox.className = `message-box show ${type}`;
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 4000);
+        }
+
+        function calculateMemberDuration(joinDate) {
+            const now = new Date();
+            const join = new Date(joinDate);
+            const diffTime = Math.abs(now - join);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+            
+            if (diffDays < 30) {
+                return `${diffDays} days`;
+            } else {
+                const diffMonths = Math.floor(diffDays / 30);
+                return `${diffMonths} months`;
+            }
+        }
+        
+        function populatePage(user) {
+            // Update welcome message
+            welcomeUsernameEl.textContent = user.username;
+            memberDurationEl.textContent = calculateMemberDuration(user.memberSince);
+
+            // Update profile card
+            profileUsernameDisplayEl.textContent = user.username;
+            profileEmailDisplayEl.textContent = user.email;
+
+            // Update stats
+            productsSoldValueEl.textContent = user.productsSold;
+            productsBoughtValueEl.textContent = user.productsBought;
+
+            // Populate edit form fields
+            editUsernameInput.value = user.username;
+            editEmailInput.value = user.email;
+        }
+
+        // --- Event Listeners ---
+        editProfileBtn.addEventListener('click', () => {
+            editFormContainer.classList.add('active');
+            editProfileBtn.style.display = 'none';
+        });
+
+        cancelEditBtn.addEventListener('click', () => {
+            editFormContainer.classList.remove('active');
+            editProfileBtn.style.display = 'inline-block';
+            // Reset form fields to original values
+            editUsernameInput.value = mockUser.username;
+            editEmailInput.value = mockUser.email;
+        });
+
+        editProfileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const newUsername = editUsernameInput.value.trim();
+            const newEmail = editEmailInput.value.trim();
+
+            if (!newUsername || !newEmail) {
+                showMessage('Username and email cannot be empty.', 'error');
+                return;
+            }
+
+            // In a real app, you would update the data in Firestore
+            mockUser.username = newUsername;
+            mockUser.email = newEmail;
+            
+            populatePage(mockUser);
+            showMessage('Profile updated successfully!', 'success');
+
+            editFormContainer.classList.remove('active');
+            editProfileBtn.style.display = 'inline-block';
+        });
+
+        // --- Initial Page Load ---
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Simulate user authentication with Firebase
+            if (initialAuthToken) {
+                try {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                    console.log("Firebase signed in with custom token.");
+                } catch (error) {
+                    console.error("Firebase custom token sign-in failed:", error);
+                    await signInAnonymously(auth);
+                }
+            } else {
+                await signInAnonymously(auth);
+                console.log("Firebase signed in anonymously.");
+            }
+            populatePage(mockUser);
+        });
+
+    </script>
+</body>
+</html>
