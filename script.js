@@ -10,6 +10,8 @@ const AppData = {
         { value: 'fashion', label: 'Fashion' },
         { value: 'home', label: 'Home & Garden' },
         { value: 'sports', label: 'Sports' }
+        { value: 'books', label: 'Books' }
+        { value: 'automotive', label: 'Automotive' }
     ]
 };
 
@@ -322,6 +324,29 @@ function updateUserInterface() {
         loginLinks.forEach(link => {
             if (link.href.includes('login.html') || link.href.includes('signup.html')) {
                 link.style.display = 'block';
+            }
+        });
+    }
+    
+    // Update user-specific elements
+    updateUserSpecificContent();
+}
+
+function updateUserSpecificContent() {
+    // Update welcome messages and user info displays
+    const welcomeElements = document.querySelectorAll('[id*="welcome"], [id*="Username"]');
+    const emailElements = document.querySelectorAll('[id*="Email"]');
+    
+    if (AppData.currentUser) {
+        welcomeElements.forEach(el => {
+            if (el.textContent && !el.value) {
+                el.textContent = AppData.currentUser.fullName || AppData.currentUser.username;
+            }
+        });
+        
+        emailElements.forEach(el => {
+            if (el.textContent && !el.value) {
+                el.textContent = AppData.currentUser.email;
             }
         });
     }

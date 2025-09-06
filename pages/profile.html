@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard - EcoFinds</title>
+    <title>My Profile - ShopVista</title>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -13,7 +13,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="../index.html"><h2><i class="fas fa-store"></i> EcoFinds</h2></a>
+                <a href="../index.html"><h2><i class="fas fa-store"></i> ShopVista</h2></a>
             </div>
             
             <div class="nav-menu">
@@ -28,7 +28,7 @@
                         <a href="about.html" class="nav-link">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="contact.html" class="nav-link ">Contact</a>
+                        <a href="contact.html" class="nav-link">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a href="dashboard.html" class="nav-link">Dashboard</a>
@@ -38,7 +38,6 @@
                     </li>
                 </ul>
             </div>
-
 
             <div class="nav-actions">
                 <div class="search-container">
@@ -80,27 +79,27 @@
         </div>
     </nav>
 
-    <!-- Dashboard Content -->
+    <!-- Profile Content -->
     <main class="dashboard-content">
         <div class="dashboard-container">
             <div class="dashboard-header">
-                <h1>My Dashboard</h1>
-                <p>Welcome back, <span id="welcomeUsername"> User</span>! You've been a member for <span id="memberDuration">8 months</span></p>
+                <h1>My Profile</h1>
+                <p>Manage your account settings and personal information</p>
             </div>
 
-            <!-- Profile and Stats Section -->
+            <!-- Profile Section -->
             <div class="profile-section">
                 <!-- Profile Card -->
                 <div class="profile-card">
                     <div class="profile-details">
                         <div class="profile-avatar">
-                            <i class="fas fa-user"></i>
+                            <i class="fas fa-user" id="profileAvatar"></i>
                         </div>
                         <div class="profile-info">
                             <h3 id="profileUsernameDisplay">Demo User</h3>
-                            <p id="profileEmailDisplay">demo@EcoFinds.com</p>
-                            <p><strong>Member since:</strong> March 2024</p>
-                            <p><strong>Location:</strong> Bengaluru, Karnataka</p>
+                            <p id="profileEmailDisplay">demo@shopvista.com</p>
+                            <p><strong>Member since:</strong> <span id="memberSince">March 2024</span></p>
+                            <p><strong>Location:</strong> <span id="profileLocation">Bengaluru, Karnataka</span></p>
                         </div>
                         <button class="btn-edit" id="editProfileBtn">
                             <i class="fas fa-edit"></i> Edit Profile
@@ -112,72 +111,98 @@
                         <form id="editProfileForm">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="editUsername">Username</label>
-                                    <input type="text" id="editUsername" class="form-control" value="Demo User">
+                                    <label for="editFullName">Full Name</label>
+                                    <input type="text" id="editFullName" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="editEmail">Email</label>
-                                    <input type="email" id="editEmail" class="form-control" value="demo@EcoFinds.com">
+                                    <label for="editEmail">Email Address</label>
+                                    <input type="email" id="editEmail" class="form-control" required>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="editLocation">Location</label>
-                                <input type="text" id="editLocation" class="form-control" value="Bengaluru, Karnataka">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editUsername">Username</label>
+                                    <input type="text" id="editUsername" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editLocation">Location</label>
+                                    <input type="text" id="editLocation" class="form-control">
+                                </div>
                             </div>
                             <div class="form-actions">
-                                <button type="submit" class="btn-save">Save Changes</button>
-                                <button type="button" class="btn-cancel" id="cancelEditBtn">Cancel</button>
+                                <button type="submit" class="btn-save">
+                                    <i class="fas fa-save"></i> Save Changes
+                                </button>
+                                <button type="button" class="btn-cancel" id="cancelEditBtn">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Stats Section -->
+            <!-- Account Statistics -->
             <div class="stats-section">
+                <div class="stats-card">
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="value" id="totalPurchases">5</div>
+                    <div class="label">Total Purchases</div>
+                </div>
+                
                 <div class="stats-card">
                     <div class="icon">
                         <i class="fas fa-tag"></i>
                     </div>
-                    <div class="value" id="productsSoldValue">12</div>
-                    <div class="label">Products Sold</div>
+                    <div class="value" id="totalListings">12</div>
+                    <div class="label">Products Listed</div>
                 </div>
                 
                 <div class="stats-card">
                     <div class="icon">
-                        <i class="fas fa-shopping-bag"></i>
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <div class="value" id="productsBoughtValue">5</div>
-                    <div class="label">Products Bought</div>
-                </div>
-                
-                <div class="stats-card">
-                    <div class="icon">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <div class="value">$2,450</div>
-                    <div class="label">Total Earnings</div>
+                    <div class="value" id="totalWishlist">8</div>
+                    <div class="label">Wishlist Items</div>
                 </div>
                 
                 <div class="stats-card">
                     <div class="icon">
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="value">4.8</div>
+                    <div class="value" id="averageRating">4.8</div>
                     <div class="label">Average Rating</div>
                 </div>
             </div>
 
             <!-- Quick Actions -->
             <div class="quick-actions">
-                <h2>Quick Actions</h2>
+                <h2>Account Actions</h2>
                 <div class="actions-grid">
+                    <a href="dashboard.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3>Dashboard</h3>
+                        <p>View your account overview and recent activity</p>
+                    </a>
+                    
                     <a href="my-listings.html" class="action-card">
                         <div class="action-icon">
                             <i class="fas fa-list"></i>
                         </div>
                         <h3>My Listings</h3>
-                        <p>View and manage your product listings</p>
+                        <p>Manage your product listings and inventory</p>
+                    </a>
+                    
+                    <a href="previous-purchases.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <h3>Purchase History</h3>
+                        <p>View your order history and track purchases</p>
                     </a>
                     
                     <a href="sellproducts.html" class="action-card">
@@ -185,62 +210,39 @@
                             <i class="fas fa-plus-circle"></i>
                         </div>
                         <h3>Sell Product</h3>
-                        <p>List a new product for sale</p>
-                    </a>
-                    
-                    <a href="previous-purchases.html" class="action-card">
-                        <div class="action-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <h3>My Purchases</h3>
-                        <p>View your purchase history</p>
-                    </a>
-                    
-                    <a href="profile.html" class="action-card">
-                        <div class="action-icon">
-                            <i class="fas fa-user-cog"></i>
-                        </div>
-                        <h3>Account Settings</h3>
-                        <p>Update your account preferences</p>
+                        <p>List new products and start selling today</p>
                     </a>
                 </div>
             </div>
 
-            <!-- Recent Activity -->
-            <div class="recent-activity">
-                <h2>Recent Activity</h2>
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <div class="activity-icon success">
-                            <i class="fas fa-check"></i>
+            <!-- Account Security -->
+            <div class="security-section">
+                <h2>Account Security</h2>
+                <div class="security-card">
+                    <div class="security-item">
+                        <div class="security-icon">
+                            <i class="fas fa-key"></i>
                         </div>
-                        <div class="activity-content">
-                            <h4>Product Sold</h4>
-                            <p>Your "Wireless Headphones" was purchased by John D.</p>
-                            <span class="activity-time">2 hours ago</span>
+                        <div class="security-content">
+                            <h4>Change Password</h4>
+                            <p>Keep your account secure by updating your password regularly</p>
                         </div>
+                        <button class="btn-secondary" id="changePasswordBtn">
+                            <i class="fas fa-lock"></i> Change Password
+                        </button>
                     </div>
                     
-                    <div class="activity-item">
-                        <div class="activity-icon info">
-                            <i class="fas fa-plus"></i>
+                    <div class="security-item">
+                        <div class="security-icon">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
-                        <div class="activity-content">
-                            <h4>New Listing</h4>
-                            <p>You listed "Gaming Mouse" for $79.99</p>
-                            <span class="activity-time">1 day ago</span>
+                        <div class="security-content">
+                            <h4>Two-Factor Authentication</h4>
+                            <p>Add an extra layer of security to your account</p>
                         </div>
-                    </div>
-                    
-                    <div class="activity-item">
-                        <div class="activity-icon warning">
-                            <i class="fas fa-shopping-bag"></i>
-                        </div>
-                        <div class="activity-content">
-                            <h4>Purchase Made</h4>
-                            <p>You bought "Yoga Mat Premium" for $45.99</p>
-                            <span class="activity-time">3 days ago</span>
-                        </div>
+                        <button class="btn-secondary" id="enable2faBtn">
+                            <i class="fas fa-toggle-off"></i> Enable 2FA
+                        </button>
                     </div>
                 </div>
             </div>
@@ -252,7 +254,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3><i class="fas fa-store"></i> EcoFinds</h3>
+                    <h3><i class="fas fa-store"></i> ShopVista</h3>
                     <p>Your trusted online marketplace for quality products</p>
                 </div>
                 <div class="footer-section">
@@ -284,7 +286,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 EcoFinds. All rights reserved.</p>
+                <p>&copy; 2025 ShopVista. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -292,18 +294,31 @@
     <script src="../js/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            setupDashboard();
+            setupProfile();
             setupProfileEdit();
+            setupSecurityActions();
         });
 
-        function setupDashboard() {
+        function setupProfile() {
             // Simulate loading user data
-            const currentUser = window.EcoFindsAPI ? window.EcoFindsAPI.getCurrentUser() : null;
+            const currentUser = window.ShopVistaAPI ? window.ShopVistaAPI.getCurrentUser() : null;
             
             if (currentUser) {
-                document.getElementById('welcomeUsername').textContent = currentUser.fullName || currentUser.username;
                 document.getElementById('profileUsernameDisplay').textContent = currentUser.fullName || currentUser.username;
                 document.getElementById('profileEmailDisplay').textContent = currentUser.email;
+                
+                // Update avatar with first letter
+                const avatar = document.getElementById('profileAvatar');
+                const firstLetter = (currentUser.fullName || currentUser.username).charAt(0).toUpperCase();
+                avatar.innerHTML = firstLetter;
+                
+                // Update member since date
+                if (currentUser.createdAt) {
+                    document.getElementById('memberSince').textContent = formatDate(currentUser.createdAt);
+                }
+            } else {
+                // Redirect to login if not authenticated
+                window.location.href = 'login.html';
             }
         }
 
@@ -316,6 +331,7 @@
             editBtn.addEventListener('click', function() {
                 editForm.classList.add('active');
                 editBtn.style.display = 'none';
+                populateEditForm();
             });
 
             cancelBtn.addEventListener('click', function() {
@@ -325,31 +341,93 @@
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
-                // Get form values
-                const username = document.getElementById('editUsername').value;
-                const email = document.getElementById('editEmail').value;
-                const location = document.getElementById('editLocation').value;
+                saveProfileChanges();
+            });
+        }
 
-                // Update display
-                document.getElementById('profileUsernameDisplay').textContent = username;
-                document.getElementById('profileEmailDisplay').textContent = email;
-                document.getElementById('welcomeUsername').textContent = username;
+        function populateEditForm() {
+            const currentUser = window.ShopVistaAPI ? window.ShopVistaAPI.getCurrentUser() : null;
+            
+            if (currentUser) {
+                document.getElementById('editFullName').value = currentUser.fullName || '';
+                document.getElementById('editEmail').value = currentUser.email || '';
+                document.getElementById('editUsername').value = currentUser.username || '';
+                document.getElementById('editLocation').value = 'Bengaluru, Karnataka'; // Demo value
+            }
+        }
 
-                // Hide form
-                editForm.classList.remove('active');
-                editBtn.style.display = 'inline-block';
+        function saveProfileChanges() {
+            const formData = {
+                fullName: document.getElementById('editFullName').value,
+                email: document.getElementById('editEmail').value,
+                username: document.getElementById('editUsername').value,
+                location: document.getElementById('editLocation').value
+            };
 
-                // Show success message
-                if (window.EcoFindsAPI) {
-                    window.EcoFindsAPI.showNotification('Profile updated successfully!', 'success');
+            // Validate form
+            if (!formData.fullName || !formData.email || !formData.username) {
+                if (window.ShopVistaAPI) {
+                    window.ShopVistaAPI.showNotification('Please fill in all required fields', 'error');
                 }
+                return;
+            }
+
+            // Update user data (in a real app, this would update the backend)
+            if (window.ShopVistaAPI && window.ShopVistaAPI.getCurrentUser()) {
+                const currentUser = window.ShopVistaAPI.getCurrentUser();
+                currentUser.fullName = formData.fullName;
+                currentUser.email = formData.email;
+                currentUser.username = formData.username;
+            }
+
+            // Update display
+            document.getElementById('profileUsernameDisplay').textContent = formData.fullName;
+            document.getElementById('profileEmailDisplay').textContent = formData.email;
+            document.getElementById('profileLocation').textContent = formData.location;
+            
+            // Update avatar
+            const avatar = document.getElementById('profileAvatar');
+            const firstLetter = formData.fullName.charAt(0).toUpperCase();
+            avatar.innerHTML = firstLetter;
+
+            // Hide form
+            document.getElementById('editFormContainer').classList.remove('active');
+            document.getElementById('editProfileBtn').style.display = 'inline-block';
+
+            // Show success message
+            if (window.ShopVistaAPI) {
+                window.ShopVistaAPI.showNotification('Profile updated successfully!', 'success');
+            }
+        }
+
+        function setupSecurityActions() {
+            const changePasswordBtn = document.getElementById('changePasswordBtn');
+            const enable2faBtn = document.getElementById('enable2faBtn');
+
+            changePasswordBtn.addEventListener('click', function() {
+                if (window.ShopVistaAPI) {
+                    window.ShopVistaAPI.showNotification('Password change feature coming soon!', 'info');
+                }
+            });
+
+            enable2faBtn.addEventListener('click', function() {
+                if (window.ShopVistaAPI) {
+                    window.ShopVistaAPI.showNotification('Two-factor authentication feature coming soon!', 'info');
+                }
+            });
+        }
+
+        function formatDate(date) {
+            return new Date(date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
             });
         }
     </script>
 
     <style>
-        /* Dashboard Specific Styles */
+        /* Profile Page Specific Styles */
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -411,74 +489,77 @@
             font-size: 0.9rem;
         }
 
-        .recent-activity {
+        .security-section {
             margin: 3rem 0;
         }
 
-        .recent-activity h2 {
+        .security-section h2 {
             color: var(--text-primary);
             margin-bottom: 2rem;
             font-size: 1.75rem;
         }
 
-        .activity-list {
+        .security-card {
             background: var(--bg-light);
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 2rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .activity-item {
+        .security-item {
             display: flex;
             align-items: center;
-            padding: 1rem 0;
+            padding: 1.5rem 0;
             border-bottom: 1px solid var(--border-color);
         }
 
-        .activity-item:last-child {
+        .security-item:last-child {
             border-bottom: none;
         }
 
-        .activity-icon {
-            width: 40px;
-            height: 40px;
+        .security-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 1rem;
+            margin-right: 1.5rem;
             color: white;
-            font-size: 0.9rem;
+            font-size: 1.25rem;
         }
 
-        .activity-icon.success {
-            background: var(--success-color);
+        .security-content {
+            flex: 1;
         }
 
-        .activity-icon.info {
-            background: var(--info-color);
-        }
-
-        .activity-icon.warning {
-            background: #f59e0b;
-        }
-
-        .activity-content h4 {
+        .security-content h4 {
             color: var(--text-primary);
-            margin-bottom: 0.25rem;
-            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
-        .activity-content p {
+        .security-content p {
             color: var(--text-secondary);
-            margin-bottom: 0.25rem;
             font-size: 0.9rem;
         }
 
-        .activity-time {
+        .btn-secondary {
+            background: var(--secondary-color);
             color: var(--text-secondary);
-            font-size: 0.8rem;
-            opacity: 0.8;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-color);
+            color: var(--text-primary);
         }
 
         @media (max-width: 768px) {
@@ -488,6 +569,16 @@
 
             .actions-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .security-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .security-icon {
+                margin-right: 0;
             }
         }
     </style>
