@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - Used Goods Marketplace</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 80px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            height: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo h2 {
+            color: #6366f1;
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo a {
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #6366f1;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #6366f1;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-icon {
+            position: relative;
+            color: #64748b;
+            font-size: 1.2rem;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-icon:hover {
+            color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #6366f1;
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #5855eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f8fafc;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: #ffffff;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-control.error {
+            border-color: #ef4444;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        .required {
+            color: #ef4444;
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-top: 80px;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 4rem 0;
+            background: #f8fafc;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-full {
+            grid-column: 1 / -1;
+        }
+
+        /* Category Selection */
+        .category-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .category-item {
+            position: relative;
+        }
+
+        .category-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .category-label {
+            display: block;
+            padding: 1rem;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category-item input[type="radio"]:checked + .category-label {
+            background: #6366f1;
+            border-color: #6366f1;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .category-icon {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Condition Selection */
+        .condition-selection {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .condition-item {
+            position: relative;
+        }
+
+        .condition-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .condition-label {
+            display: block;
+            padding: 0.75rem;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .condition-item input[type="radio"]:checked + .condition-label {
+            background: #6366f1;
+            border-color: #6366f1;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Image Upload */
+        .image-upload {
+            position: relative;
+            border: 2px dashed #6366f1;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            background: rgba(99, 102, 241, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .image-upload:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .image-upload input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .upload-content {
+            color: #6366f1;
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #d1fae5;
+            color: #047857;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #10b981;
+            display: none;
+        }
+
+        /* Price Input */
+        .price-input {
+            position: relative;
+        }
+
+        .price-input::before {
+            content: '$';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: 600;
+            color: #64748b;
+            z-index: 1;
+        }
+
+        .price-input .form-control {
+            padding-left: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .category-selection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .condition-selection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .page-header {
+                padding: 2rem 0;
+            }
+
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .form-section {
+                padding: 2rem 0;
+            }
+
+            .category-selection {
+                grid-template-columns: 1fr;
+            }
+
+            .condition-selection {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html"><h2><i class="fas fa-store"></i> ShopVista</h2></a>
+            </div>
+            
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="shop.html" class="nav-link">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link active">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="sellproducts.html" class="nav-link">Sell</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-icons">
+                    <a href="cart.html" class="nav-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <div class="user-menu">
+                        <button class="user-btn" id="userMenuBtn">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="login.html">Login</a>
+                            <a href="signup.html">Sign Up</a>
+                            <div class="user-logged-in" style="display: none;">
+                                <a href="profile.html">Profile</a>
+                                <a href="my-listings.html">My Listings</a>
+                                <a href="previous-purchases.html">My Purchases</a>
+                                <a href="#" id="logoutBtn">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Add Your Product</h1>
+            <p>List your used goods and connect with buyers in your community. Turn your unused items into cash!</p>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> Product added successfully! Your listing is now live and visible to buyers.
+                </div>
+
+                <form id="addProductForm">
+                    <div class="form-group">
+                        <label for="productTitle">Product Title <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="productTitle" name="productTitle" 
+                               placeholder="e.g., iPhone 12 Pro Max 128GB Space Gray" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category <span class="required">*</span></label>
+                        <div class="category-selection">
+                            <div class="category-item">
+                                <input type="radio" id="electronics" name="category" value="electronics" required>
+                                <label for="electronics" class="category-label">
+                                    <span class="category-icon"><i class="fas fa-mobile-alt"></i></span>
+                                    Electronics
+                                </label>
+                            </div>
+                            <div class="category-item">
+                                <input type="radio" id="furniture" name="category" value="furniture">
+                                <label for="furniture" class="category-label">
+                                    <span class="category-icon"><i class="fas fa-couch"></i></span>
+                                    Furniture
+                                </label>
+                            </div>
+                            <div class="category-item">
+                                <input type="radio" id="clothing" name="category" value="clothing">
+                                <label for="clothing" class="category-label">
+                                    <span class="category-icon"><i class="fas fa-tshirt"></i></span>
+                                    Clothing
+                                </label>
+                            </div>
+                            <div class="category-item">
+                                <input type="radio" id="books" name="category" value="books">
+                                <label for="books" class="category-label">
+                                    <span class="category-icon"><i class="fas fa-book"></i></span>
+                                    Books
+                                </label>
+                            </div>
+                            <div class="category-item">
+                                <input type="radio" id="sports" name="category" value="sports">
+                                <label for="sports" class="category-label">
+                                    <span class="category-icon"><i class="fas fa-basketball-ball"></i></span>
+                                    Sports
+                                </label>
+                            </div>
+                            <div class="category-item">
+                                <input type="radio" id="automotive" name="category" value="automotive">
+                                <label for="automotive" class="category-label">
+                                    <span class="category-icon"><i class="fas fa-car"></i></span>
+                                    Automotive
+                                </label>
+                            </div>
+                            <div class="category-item">
+                                <input type="radio" id="home" name="category" value="home">
+                                <label for="home" class="category-label">
+                                    <span class="category-icon"><i class="fas fa-home"></i></span>
+                                    Home
+                                </label>
+                            </div>
+                            <div class="category-item">
+                                <input type="radio" id="other" name="category" value="other">
+                                <label for="other" class="category-label">
+                                    <span class="category-icon"><i class="fas fa-box"></i></span>
+                                    Other
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description <span class="required">*</span></label>
+                        <textarea class="form-control" id="description" name="description" rows="5" 
+                                  placeholder="Describe your item's features, condition, and any relevant details that would help buyers..." required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="price">Price <span class="required">*</span></label>
+                            <div class="price-input">
+                                <input type="number" class="form-control" id="price" name="price" 
+                                       placeholder="0.00" step="0.01" min="0" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="brand">Brand (Optional)</label>
+                            <input type="text" class="form-control" id="brand" name="brand" 
+                                   placeholder="e.g., Apple, Samsung, IKEA">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Condition <span class="required">*</span></label>
+                        <div class="condition-selection">
+                            <div class="condition-item">
+                                <input type="radio" id="likeNew" name="condition" value="like-new" required>
+                                <label for="likeNew" class="condition-label">Like New</label>
+                            </div>
+                            <div class="condition-item">
+                                <input type="radio" id="excellent" name="condition" value="excellent">
+                                <label for="excellent" class="condition-label">Excellent</label>
+                            </div>
+                            <div class="condition-item">
+                                <input type="radio" id="good" name="condition" value="good">
+                                <label for="good" class="condition-label">Good</label>
+                            </div>
+                            <div class="condition-item">
+                                <input type="radio" id="fair" name="condition" value="fair">
+                                <label for="fair" class="condition-label">Fair</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="images">Product Images</label>
+                        <div class="image-upload">
+                            <input type="file" id="images" name="images" accept="image/*" multiple>
+                            <div class="upload-content">
+                                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <div>
+                                    <strong>Click to upload photos</strong><br>
+                                    <small>Add up to 5 images (JPG, PNG, max 5MB each)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Location <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="location" name="location" 
+                                   placeholder="City, State" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMethod">Preferred Contact</label>
+                            <select class="form-control" id="contactMethod" name="contactMethod">
+                                <option value="email">Email</option>
+                                <option value="phone">Phone</option>
+                                <option value="message">In-app Message</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="text-align: center; margin-top: 2rem;">
+                        <button type="submit" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">
+                            <i class="fas fa-plus-circle"></i> List My Product
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const form = document.getElementById('addProductForm');
+        const successMessage = document.getElementById('successMessage');
+        const imageInput = document.getElementById('images');
+        const uploadContent = document.querySelector('.upload-content');
+
+        // Handle image upload preview
+        imageInput.addEventListener('change', function(e) {
+            const files = e.target.files;
+            if (files.length > 0) {
+                uploadContent.innerHTML = `
+                    <div class="upload-icon"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <strong>${files.length} image(s) selected</strong><br>
+                        <small>Ready to upload</small>
+                    </div>
+                `;
+                uploadContent.parentElement.style.borderColor = '#10b981';
+                uploadContent.parentElement.style.background = 'rgba(16, 185, 129, 0.05)';
+            }
+        });
+
+        // Handle form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(form);
+            const productData = {};
+            
+            // Convert FormData to regular object
+            for (let [key, value] of formData.entries()) {
+                productData[key] = value;
+            }
+            
+            console.log('Product data:', productData);
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+            
+            // Reset form after success
+            setTimeout(() => {
+                form.reset();
+                
+                // Reset image upload display
+                uploadContent.innerHTML = `
+                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div>
+                        <strong>Click to upload photos</strong><br>
+                        <small>Add up to 5 images (JPG, PNG, max 5MB each)</small>
+                    </div>
+                `;
+                uploadContent.parentElement.style.borderColor = '#6366f1';
+                uploadContent.parentElement.style.background = 'rgba(99, 102, 241, 0.05)';
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }, 2000);
+        });
+
+        // Add smooth loading animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const formContainer = document.querySelector('.form-container');
+            formContainer.style.opacity = '0';
+            formContainer.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                formContainer.style.transition = 'all 0.6s ease';
+                formContainer.style.opacity = '1';
+                formContainer.style.transform = 'translateY(0)';
+            }, 200);
+        });
+    </script>
+</body>
+</html>

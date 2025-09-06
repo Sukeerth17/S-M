@@ -3,582 +3,592 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - ShopVista</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Login & Sign Up - EcoFinds</title>
+    <!-- Fonts and Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="../index.html"><h2><i class="fas fa-store"></i> ShopVista</h2></a>
-            </div>
-            
-            <div class="nav-menu">
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="../index.html" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="shop.html" class="nav-link">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="about.html" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link">Contact</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="nav-actions">
-                <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Search products...">
-                    <button class="search-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-                
-                <div class="nav-icons">
-                    <a href="cart.html" class="nav-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count">0</span>
-                    </a>
-                    
-                    <div class="user-menu">
-                        <button class="user-btn" id="userMenuBtn">
-                            <i class="fas fa-user"></i>
-                        </button>
-                        <div class="user-dropdown" id="userDropdown">
-                            <a href="login.html">Login</a>
-                            <a href="signup.html">Sign Up</a>
-                            <div class="user-logged-in" style="display: none;">
-                                <a href="profile.html">Profile</a>
-                                <a href="my-listings.html">My Listings</a>
-                                <a href="previous-purchases.html">My Purchases</a>
-                                <a href="#" id="logoutBtn">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="auth-page">
-        <div class="auth-container">
-            <div class="auth-card">
-                <div class="auth-header">
-                    <h1>Create Account</h1>
-                    <p>Join our marketplace community</p>
-                </div>
-
-                <form id="signupForm" class="auth-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="fullName" class="form-control" required>
-                            <div class="error-message" id="fullNameError"></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" id="username" name="username" class="form-control" required>
-                            <div class="error-message" id="usernameError"></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                        <div class="error-message" id="emailError"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <div class="password-input">
-                            <input type="password" id="password" name="password" class="form-control" required>
-                            <button type="button" class="password-toggle" id="passwordToggle">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                        <div class="password-strength" id="passwordStrength">
-                            <div class="strength-bar"></div>
-                            <span class="strength-text">Enter a password</span>
-                        </div>
-                        <div class="error-message" id="passwordError"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm Password</label>
-                        <div class="password-input">
-                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
-                            <button type="button" class="password-toggle" id="confirmPasswordToggle">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                        <div class="error-message" id="confirmPasswordError"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
-                            <span class="checkmark"></span>
-                            I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
-                        </label>
-                        <div class="error-message" id="agreeTermsError"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="newsletter" name="newsletter">
-                            <span class="checkmark"></span>
-                            Subscribe to our newsletter for updates and offers
-                        </label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary auth-submit" id="signupBtn">
-                        <span>Create Account</span>
-                        <i class="fas fa-spinner fa-spin" style="display: none;"></i>
-                    </button>
-
-                    <div class="auth-divider">
-                        <span>or</span>
-                    </div>
-
-                    <div class="auth-alternatives">
-                        <button type="button" class="btn btn-outline social-btn">
-                            <i class="fab fa-google"></i>
-                            Sign up with Google
-                        </button>
-                        <button type="button" class="btn btn-outline social-btn">
-                            <i class="fab fa-facebook"></i>
-                            Sign up with Facebook
-                        </button>
-                    </div>
-
-                    <div class="auth-footer">
-                        <p>Already have an account? <a href="login.html">Sign in here</a></p>
-                    </div>
-                </form>
-            </div>
-
-            <div class="auth-side">
-                <div class="auth-side-content">
-                    <h2>Start Selling Today</h2>
-                    <ul>
-                        <li><i class="fas fa-check"></i> List your products for free</li>
-                        <li><i class="fas fa-check"></i> Reach thousands of buyers</li>
-                        <li><i class="fas fa-check"></i> Secure payment processing</li>
-                        <li><i class="fas fa-check"></i> Easy listing management</li>
-                        <li><i class="fas fa-check"></i> Track your sales and analytics</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3><i class="fas fa-store"></i> ShopVista</h3>
-                    <p>Your trusted online marketplace for quality products</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Account</h4>
-                    <ul>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="signup.html">Sign Up</a></li>
-                        <li><a href="profile.html">Profile</a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Follow Us</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 ShopVista. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="../js/script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if already logged in
-            if (window.appFunctions.currentUser()) {
-                window.location.href = '../index.html';
-                return;
-            }
-
-            setupSignupForm();
-            setupPasswordToggles();
-            setupPasswordStrength();
-        });
-
-        function setupSignupForm() {
-            const signupForm = document.getElementById('signupForm');
-            const signupBtn = document.getElementById('signupBtn');
-
-            signupForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                const formData = new FormData(signupForm);
-                const userData = {
-                    fullName: formData.get('fullName'),
-                    username: formData.get('username'),
-                    email: formData.get('email'),
-                    password: formData.get('password'),
-                    confirmPassword: formData.get('confirmPassword'),
-                    agreeTerms: formData.get('agreeTerms'),
-                    newsletter: formData.get('newsletter')
-                };
-
-                // Clear previous errors
-                clearFormErrors();
-
-                // Validate form
-                if (!validateSignupForm(userData)) {
-                    return;
-                }
-
-                // Show loading state
-                setLoadingState(signupBtn, true);
-
-                // Simulate API call delay
-                setTimeout(() => {
-                    const result = window.appFunctions.register(userData);
-                    
-                    setLoadingState(signupBtn, false);
-
-                    if (result.success) {
-                        window.appFunctions.showNotification(result.message, 'success');
-                        
-                        // Redirect to home page
-                        setTimeout(() => {
-                            window.location.href = '../index.html';
-                        }, 1000);
-                    } else {
-                        window.appFunctions.showNotification(result.message, 'error');
-                        
-                        // Show error on form
-                        if (result.message.includes('email')) {
-                            showFieldError('email', result.message);
-                        }
-                    }
-                }, 1000);
-            });
-
-            // Real-time validation
-            const username = document.getElementById('username');
-            const email = document.getElementById('email');
-            
-            username.addEventListener('blur', () => validateUsername(username.value));
-            email.addEventListener('blur', () => validateEmail(email.value));
-        }
-
-        function setupPasswordToggles() {
-            const toggles = [
-                { toggle: 'passwordToggle', input: 'password' },
-                { toggle: 'confirmPasswordToggle', input: 'confirmPassword' }
-            ];
-
-            toggles.forEach(({ toggle, input }) => {
-                const toggleBtn = document.getElementById(toggle);
-                const inputField = document.getElementById(input);
-
-                toggleBtn.addEventListener('click', function() {
-                    const type = inputField.getAttribute('type') === 'password' ? 'text' : 'password';
-                    inputField.setAttribute('type', type);
-                    
-                    const icon = toggleBtn.querySelector('i');
-                    icon.className = type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
-                });
-            });
-        }
-
-        function setupPasswordStrength() {
-            const passwordInput = document.getElementById('password');
-            const strengthIndicator = document.getElementById('passwordStrength');
-            const strengthBar = strengthIndicator.querySelector('.strength-bar');
-            const strengthText = strengthIndicator.querySelector('.strength-text');
-
-            passwordInput.addEventListener('input', function() {
-                const password = this.value;
-                const strength = calculatePasswordStrength(password);
-                
-                strengthBar.className = `strength-bar strength-${strength.level}`;
-                strengthText.textContent = strength.text;
-                
-                // Update width of strength bar
-                const widths = { weak: 25, fair: 50, good: 75, strong: 100 };
-                strengthBar.style.width = `${widths[strength.level] || 0}%`;
-            });
-        }
-
-        function calculatePasswordStrength(password) {
-            if (password.length === 0) {
-                return { level: '', text: 'Enter a password' };
-            }
-
-            let score = 0;
-            const checks = {
-                length: password.length >= 8,
-                lowercase: /[a-z]/.test(password),
-                uppercase: /[A-Z]/.test(password),
-                number: /[0-9]/.test(password),
-                special: /[^a-zA-Z0-9]/.test(password)
-            };
-
-            score = Object.values(checks).filter(Boolean).length;
-
-            if (score < 2) return { level: 'weak', text: 'Weak password' };
-            if (score < 3) return { level: 'fair', text: 'Fair password' };
-            if (score < 4) return { level: 'good', text: 'Good password' };
-            return { level: 'strong', text: 'Strong password' };
-        }
-
-        function validateSignupForm(userData) {
-            let isValid = true;
-
-            // Full name validation
-            if (!userData.fullName.trim()) {
-                showFieldError('fullName', 'Full name is required');
-                isValid = false;
-            } else if (userData.fullName.trim().length < 2) {
-                showFieldError('fullName', 'Full name must be at least 2 characters');
-                isValid = false;
-            }
-
-            // Username validation
-            if (!validateUsername(userData.username)) {
-                isValid = false;
-            }
-
-            // Email validation
-            if (!validateEmail(userData.email)) {
-                isValid = false;
-            }
-
-            // Password validation
-            if (!userData.password) {
-                showFieldError('password', 'Password is required');
-                isValid = false;
-            } else if (userData.password.length < 8) {
-                showFieldError('password', 'Password must be at least 8 characters');
-                isValid = false;
-            }
-
-            // Confirm password validation
-            if (!userData.confirmPassword) {
-                showFieldError('confirmPassword', 'Please confirm your password');
-                isValid = false;
-            } else if (userData.password !== userData.confirmPassword) {
-                showFieldError('confirmPassword', 'Passwords do not match');
-                isValid = false;
-            }
-
-            // Terms agreement validation
-            if (!userData.agreeTerms) {
-                showFieldError('agreeTerms', 'You must agree to the terms and conditions');
-                isValid = false;
-            }
-
-            return isValid;
-        }
-
-        function validateUsername(username) {
-            if (!username.trim()) {
-                showFieldError('username', 'Username is required');
-                return false;
-            } else if (username.trim().length < 3) {
-                showFieldError('username', 'Username must be at least 3 characters');
-                return false;
-            } else if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-                showFieldError('username', 'Username can only contain letters, numbers, and underscores');
-                return false;
-            }
-
-            // Check if username exists
-            const users = window.appFunctions.getStoredData('users') || [];
-            if (users.find(u => u.username.toLowerCase() === username.toLowerCase())) {
-                showFieldError('username', 'Username is already taken');
-                return false;
-            }
-
-            // Clear error if valid
-            clearFieldError('username');
-            return true;
-        }
-
-        function validateEmail(email) {
-            if (!email) {
-                showFieldError('email', 'Email is required');
-                return false;
-            } else if (!isValidEmail(email)) {
-                showFieldError('email', 'Please enter a valid email address');
-                return false;
-            }
-
-            // Check if email exists
-            const users = window.appFunctions.getStoredData('users') || [];
-            if (users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
-                showFieldError('email', 'Email is already registered');
-                return false;
-            }
-
-            // Clear error if valid
-            clearFieldError('email');
-            return true;
-        }
-
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        function showFieldError(fieldName, message) {
-            const field = document.getElementById(fieldName);
-            const errorElement = document.getElementById(fieldName + 'Error');
-            
-            if (field) field.classList.add('error');
-            if (errorElement) errorElement.textContent = message;
-        }
-
-        function clearFieldError(fieldName) {
-            const field = document.getElementById(fieldName);
-            const errorElement = document.getElementById(fieldName + 'Error');
-            
-            if (field) field.classList.remove('error');
-            if (errorElement) errorElement.textContent = '';
-        }
-
-        function clearFormErrors() {
-            const errorElements = document.querySelectorAll('.error-message');
-            errorElements.forEach(element => {
-                element.textContent = '';
-            });
-
-            const errorFields = document.querySelectorAll('.form-control.error');
-            errorFields.forEach(field => {
-                field.classList.remove('error');
-            });
-        }
-
-        function setLoadingState(button, isLoading) {
-            const span = button.querySelector('span');
-            const spinner = button.querySelector('.fa-spinner');
-            
-            if (isLoading) {
-                span.style.display = 'none';
-                spinner.style.display = 'inline-block';
-                button.disabled = true;
-            } else {
-                span.style.display = 'inline-block';
-                spinner.style.display = 'none';
-                button.disabled = false;
-            }
-        }
-    </script>
-
+    <!-- Tailwind CSS CDN for quick styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+        /*
+         * File: login-signup.html (Internal Stylesheet)
+         * Description: Comprehensive stylesheet for the user authentication page of EcoFinds.
+         * This includes base styles, form animations, and a responsive design.
+         *
+         * TABLE OF CONTENTS:
+         * 1.0 Global Variables & Base Styles
+         * 2.0 Page Layout & Card Container
+         * 3.0 Form & Element Styles
+         * 4.0 Message Box & Notifications
+         * 5.0 Keyframe Animations
+         * 6.0 Responsive Design (Media Queries)
+         */
+
+        /* =========================================================================
+           1.0 Global Variables & Base Styles
+           ========================================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .password-strength {
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #5855eb;
+            --secondary-color: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --bg-light: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-medium: 0 10px 25px rgba(0,0,0,0.15);
+            --font-family: 'Inter', sans-serif;
+            --error-color: #ef4444;
+            --success-color: #22c55e;
+            --info-color: #3b82f6;
         }
 
-        .strength-bar {
-            height: 4px;
-            border-radius: 2px;
-            background: #e5e7eb;
-            transition: all 0.3s ease;
-            margin-bottom: 0.25rem;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .strength-bar.strength-weak {
-            background: #ef4444;
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            background: var(--secondary-color);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden; /* Prevents horizontal scroll on animations */
         }
 
-        .strength-bar.strength-fair {
-            background: #f59e0b;
-        }
+        /* =========================================================================
+           2.0 Page Layout & Card Container
+           ========================================================================= */
 
-        .strength-bar.strength-good {
-            background: #10b981;
-        }
-
-        .strength-bar.strength-strong {
-            background: #059669;
-        }
-
-        .strength-text {
-            font-size: 0.8rem;
-            color: #64748b;
-        }
-
-        .checkbox-label {
+        .login-signup-page {
             display: flex;
-            align-items: flex-start;
-            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, #eef2ff 0%, #c4b5fd 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .circle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: moveCircle 20s infinite ease-in-out;
+            will-change: transform, opacity;
+        }
+
+        .circle-1 { width: 150px; height: 150px; top: 10%; left: 5%; animation-delay: 0s; }
+        .circle-2 { width: 200px; height: 200px; bottom: 20%; right: 10%; animation-delay: 2s; }
+        .circle-3 { width: 100px; height: 100px; top: 30%; right: 15%; animation-delay: 4s; }
+        .circle-4 { width: 180px; height: 180px; bottom: 5%; left: 25%; animation-delay: 6s; }
+        .circle-5 { width: 220px; height: 220px; top: 40%; left: 40%; animation-delay: 8s; }
+
+        .card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 420px;
+            height: 650px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: slideInUp 0.8s cubic-bezier(0.2, 0.8, 0.4, 1.2) forwards;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        .card-container.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .login-card, .signup-card {
+            background-color: var(--bg-light);
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow-medium);
+            padding: 2.5rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.4, 1.2);
+        }
+
+        .signup-card {
+            transform: rotateY(180deg);
+        }
+
+        /* =========================================================================
+           3.0 Form & Element Styles
+           ========================================================================= */
+
+        .form-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-header .icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .form-header .icon:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .form-header p {
             font-size: 0.9rem;
-            color: #64748b;
-            line-height: 1.4;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+            text-align: center;
         }
 
-        .checkbox-label input[type="checkbox"] {
-            margin-right: 0.5rem;
-            margin-top: 0.2rem;
-            flex-shrink: 0;
+        .form-group {
+            margin-bottom: 1.5rem;
+            width: 100%;
         }
 
-        .terms-link {
-            color: #6366f1;
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1.25rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            color: var(--text-primary);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: #94a3b8;
+        }
+
+        .form-group .password-container {
+            position: relative;
+        }
+
+        .form-group .password-container .form-control {
+            padding-right: 3rem;
+        }
+
+        .form-group .password-container .toggle-password {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .form-group .password-container .toggle-password:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .link {
+            color: var(--primary-color);
             text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
         }
 
-        .terms-link:hover {
+        .link:hover {
+            color: var(--primary-dark);
             text-decoration: underline;
         }
 
-        @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
+        .divider {
+            text-align: center;
+            position: relative;
+            margin: 1.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            display: none; /* Removed as social logins are removed */
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .social-login-container {
+            width: 100%;
+            display: none; /* Removed as social logins are removed */
+        }
+
+        .social-login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: white;
+            color: var(--text-secondary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-login-btn:hover {
+            background: #eef2ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .social-login-btn i {
+            margin-right: 0.75rem;
+        }
+
+        /* =========================================================================
+           4.0 Message Box & Notifications
+           ========================================================================= */
+        .message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 1rem 2rem;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .message-box.show {
+            opacity: 1;
+        }
+
+        .message-box.error { background-color: var(--error-color); }
+        .message-box.success { background-color: var(--success-color); }
+        .message-box.info { background-color: var(--info-color); }
+
+        /* =========================================================================
+           5.0 Keyframe Animations
+           ========================================================================= */
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes moveCircle {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 0.2;
+            }
+            25% {
+                transform: translateY(-20px) scale(1.1) rotate(45deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(0) scale(1.2) rotate(90deg);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translateY(20px) scale(1.1) rotate(135deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(0) scale(1) rotate(180deg);
+                opacity: 0.2;
+            }
+        }
+
+        /* =========================================================================
+           6.0 Responsive Design (Media Queries)
+           ========================================================================= */
+
+        @media (max-width: 640px) {
+            .login-signup-page {
+                padding: 1rem;
+            }
+            .card-container {
+                max-width: 100%;
+                height: auto;
+                min-height: 550px;
+            }
+            .login-card, .signup-card {
+                padding: 1.5rem;
+            }
+            .form-header h2 {
+                font-size: 1.75rem;
+            }
+            .form-header .icon {
+                font-size: 3rem;
             }
         }
     </style>
+</head>
+<body class="login-signup-page">
+    <div class="background-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+        <div class="circle circle-4"></div>
+        <div class="circle circle-5"></div>
+    </div>
+    
+    <div class="card-container" id="cardContainer">
+        <!-- Login Card -->
+        <div class="login-card">
+            <div class="form-header">
+                <div class="icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h2>Login to EcoFinds</h2>
+                <p>Welcome back! Please enter your details.</p>
+            </div>
+            <form id="loginForm" class="w-full">
+                <div class="form-group">
+                    <label for="loginEmail" class="block text-sm font-semibold mb-1 text-gray-700">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="you@example.com" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" class="block text-sm font-semibold mb-1 text-gray-700">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+                        <span class="toggle-password" id="toggleLoginPassword">
+                            <i class="fas fa-eye-slash"></i>
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+                <div class="text-center mt-4 text-sm">
+                    Don't have an account? <span class="link" id="showSignup">Sign Up</span>
+                </div>
+            </form>
+        </div>
+
+        <!-- Sign Up Card -->
+        <div class="signup-card">
+            <div class="form-header">
+                <div class="icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h2>Create Your Account</h2>
+                <p>Join our community to start buying and selling.</p>
+            </div>
+            <form id="signupForm" class="w-full">
+                <div class="form-group">
+                    <label for="signupEmail" class="block text-sm font-semibold mb-1 text-gray-700">Email Address</label>
+                    <input type="email" id="signupEmail" class="form-control" placeholder="you@example.com" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="signupUsername" class="block text-sm font-semibold mb-1 text-gray-700">Username</label>
+                    <input type="text" id="signupUsername" class="form-control" placeholder="Enter a username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword" class="block text-sm font-semibold mb-1 text-gray-700">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="signupPassword" class="form-control" placeholder="••••••••" required autocomplete="new-password">
+                        <span class="toggle-password" id="toggleSignupPassword">
+                            <i class="fas fa-eye-slash"></i>
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Sign Up</button>
+                <div class="text-center mt-4 text-sm">
+                    Already have an account? <span class="link" id="showLogin">Login</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Message Box -->
+    <div id="message-box" class="message-box"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cardContainer = document.getElementById('cardContainer');
+            const showSignupBtn = document.getElementById('showSignup');
+            const showLoginBtn = document.getElementById('showLogin');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const messageBox = document.getElementById('message-box');
+            const toggleLoginPassword = document.getElementById('toggleLoginPassword');
+            const toggleSignupPassword = document.getElementById('toggleSignupPassword');
+            const loginPasswordInput = document.getElementById('loginPassword');
+            const signupPasswordInput = document.getElementById('signupPassword');
+
+            // Simulate a simple user database. In a real app, this would be a backend database.
+            let users = [
+                { email: "john.doe@example.com", password: "password123", username: "johndoe" },
+                { email: "jane.smith@example.com", password: "password456", username: "janesmith" }
+            ];
+
+            // Function to show a message in the notification box
+            function showMessage(text, type = 'info') {
+                messageBox.textContent = text;
+                messageBox.className = `message-box show ${type}`;
+                setTimeout(() => {
+                    messageBox.classList.remove('show');
+                }, 4000);
+            }
+
+            // Function to toggle password visibility
+            function togglePasswordVisibility(input, icon) {
+                const type = input.type === 'password' ? 'text' : 'password';
+                input.type = type;
+                icon.className = `fas fa-eye${type === 'password' ? '-slash' : ''}`;
+            }
+
+            toggleLoginPassword.addEventListener('click', () => {
+                togglePasswordVisibility(loginPasswordInput, toggleLoginPassword.querySelector('i'));
+            });
+
+            toggleSignupPassword.addEventListener('click', () => {
+                togglePasswordVisibility(signupPasswordInput, toggleSignupPassword.querySelector('i'));
+            });
+
+            // Flip the card to show the sign-up form
+            showSignupBtn.addEventListener('click', () => {
+                cardContainer.classList.add('flipped');
+            });
+
+            // Flip the card to show the login form
+            showLoginBtn.addEventListener('click', () => {
+                cardContainer.classList.remove('flipped');
+            });
+
+            // Handle Login Form Submission
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+                const password = document.getElementById('loginPassword').value;
+
+                if (!email || !password) {
+                    showMessage('Please fill in all fields.', 'error');
+                    return;
+                }
+
+                const user = users.find(u => u.email === email);
+
+                if (!user) {
+                    // Email not found, show "need to sign up" message
+                    showMessage('Email not found. You need to sign up!', 'error');
+                } else if (user.password === password) {
+                    // Successful login
+                    showMessage('Login successful! Redirecting...', 'success');
+                    // In a real application, you would store a JWT or session token here
+                    localStorage.setItem('isLoggedIn', 'true');
+                    setTimeout(() => {
+                        window.location.href = '../index.html';
+                    }, 1000);
+                } else {
+                    showMessage('Incorrect password. Please try again.', 'error');
+                }
+            });
+
+            // Handle Sign Up Form Submission
+            signupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+                const username = document.getElementById('signupUsername').value.trim();
+                const password = document.getElementById('signupPassword').value;
+
+                if (!email || !username || !password) {
+                    showMessage('Please fill in all fields.', 'error');
+                    return;
+                }
+
+                if (users.find(u => u.email === email)) {
+                    showMessage('This email is already registered. Please log in.', 'error');
+                } else {
+                    // Add new user to the simulated database
+                    users.push({ email, username, password });
+                    showMessage('Account created successfully! Please log in.', 'success');
+                    cardContainer.classList.remove('flipped'); // Flip back to login
+                }
+            });
+        });
+    </script>
 </body>
 </html>
